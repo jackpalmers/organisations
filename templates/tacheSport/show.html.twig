@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article>
+        <h1>{{ tacheSport.NomSport }}</h1>
+        <div> {{ tacheSport.Duree | date('i:s')}}</div>
+        <div class="content">
+            {{ tacheSport.Nombre }}
+        </div>
+    </article>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste des tâches de développement {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        table {
+            text-align: center;
+        }
+
+        th {
+            font-size: 20px;
+            background-color: #AAAAAA;
+        }
+        .table-bordered {
+            border: 1px solid #ddd !important;
+        }
+
+        table caption {
+            padding: .5em 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            table caption {
+                display: none;
+            }
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+    <br/>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Projet</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tacheDev in tachesDev %}
+            <tr>
+                <td>{{ tacheDev.projectName }}</td>
+                <td>{{ tacheDev.description }}</td>
+                <td><a href="{{ path('tacheDev_edit', {'id': tacheDev.id}) }}" class="btn btn-primary">Modifier</a>
+                <a href="{{ path('tacheDev_delete', {'id': tacheDev.id}) }}" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center">Ce récapitulatif vous est proposé par la CucusIncorporation</td>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}

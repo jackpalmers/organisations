@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Liste des activités sportive {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        table {
+            text-align: center;
+        }
+
+        th {
+            font-size: 20px;
+            background-color: #AAAAAA;
+        }
+        .table-bordered {
+            border: 1px solid #ddd !important;
+        }
+
+        table caption {
+            padding: .5em 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            table caption {
+                display: none;
+            }
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+    <br/>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Sport</th>
+            <th>Durée</th>
+            <th>Nombre</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tacheSport in tachesSport %}
+            <tr>
+                <td>{{ tacheSport.NomSport }}</td>
+                <td>{{ tacheSport.Duree | date('i:s') }} min</td>
+                <td>{{ tacheSport.Nombre }}</td>
+                <td><a href="{{ path('tacheSport_edit', {'id': tacheSport.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('tacheSport_delete', {'id': tacheSport.id}) }}" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center">Ce récapitulatif vous est proposé par la CucusIncorporation</td>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}

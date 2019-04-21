@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article>
+        <h1>{{ tacheRdv.type }}</h1>
+        <div class="metadata">Rendez-vous le {{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.lieu }}</div>
+        <div class="content">
+            {#<img src="{{ article.image }}" alt="">#}
+        </div>
+    </article>
+{% endblock %}

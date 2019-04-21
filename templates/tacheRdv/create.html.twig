@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formTacheRdv 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>
+        {% if (editMode) %}
+            Modification d'un rendez-vous
+        {% else %}
+            Creation d'un rendez-vous
+        {% endif %}
+    </h1>
+
+    {{ form_start(formTacheRdv) }}
+
+    {#{{ form_widget(formTacheRdv) }}#}
+
+    {{ form_row(formTacheRdv.type, { 'attr': {'placeholder': 'Type de rendez-vous'}}) }}
+
+    {{ form_row(formTacheRdv.date, { 'attr': {'placeholder': 'Date'}}) }}
+
+    {{ form_row(formTacheRdv.heure) }}
+
+    {{ form_row(formTacheRdv.lieu, { 'attr': {'placeholder': 'Lieu'}}) }}
+
+    <button type="submit" class="btn btn-success">
+    {% if (editMode) %}
+        Enregistrer les modifications
+    {% else %}
+        Ajouter le rendez-vous
+    {% endif %}
+    </button>
+
+    {{ form_end(formTacheRdv) }}
+
+    {#<div class="form-group">#}
+        {#<label for="">Type</label>#}
+        {#{{ form_widget(formTacheRdv.type) }}#}
+    {#</div>#}
+
+    {#<div class="form-group">#}
+        {#<label for="">Date</label>#}
+        {#{{ form_widget(formTacheRdv.date) }}#}
+    {#</div>#}
+
+    {#<div class="form-group">#}
+        {#<label for="">Lieu</label>#}
+        {#{{ form_widget(formTacheRdv.lieu) }}#}
+    {#</div>#}
+
+    {#{{ form_end(formTacheRdv) }}#}
+
+{% endblock %}

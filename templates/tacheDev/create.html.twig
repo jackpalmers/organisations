@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formTacheDev 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>
+        {% if (editMode) %}
+            Modification d'une fiche de bug
+        {% else %}
+            Creation d'une fiche de bug
+        {% endif %}
+    </h1>
+
+    {{ form_start(formTacheDev) }}
+
+    {{ form_row(formTacheDev.projectName, { 'attr': {'placeholder': 'Nom du projet'}}) }}
+
+    {{ form_row(formTacheDev.description, { 'attr': {'placeholder': 'Description'}}) }}
+
+    <button type="submit" class="btn btn-success">
+        {% if (editMode) %}
+            Enregistrer les modifications
+        {% else %}
+            Ajouter le bug
+        {% endif %}
+    </button>
+
+    {{ form_end(formTacheDev) }}
+
+{% endblock %}
