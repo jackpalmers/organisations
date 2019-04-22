@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2bf6a3b-5b7e-4f22-932b-6791eae85bb0" name="Default" comment="">
+    <list default="true" id="d2bf6a3b-5b7e-4f22-932b-6791eae85bb0" name="Default" comment="Ajout main controller pour changer la page d'accueil">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TacheRdvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TacheRdvController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TacheRdv.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TacheRdv.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TacheRdvRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TacheRdvRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/accueil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accueil.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +39,8 @@
       <file leaf-file-name="accueil.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="70" column="17" lean-forward="true" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+            <state relative-caret-position="264">
+              <caret line="65" column="55" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -51,7 +48,7 @@
       <file leaf-file-name="TacheRdv.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/TacheRdv.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="45">
               <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
@@ -63,8 +60,8 @@
       <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/tacheRdv/home.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
+            <state relative-caret-position="309">
+              <caret line="48" column="76" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="76" />
             </state>
           </provider>
         </entry>
@@ -72,8 +69,8 @@
       <file leaf-file-name="TacheRdvController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/TacheRdvController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="195">
+              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
               <folding>
                 <element signature="e#34#72#0#PHP" expanded="true" />
               </folding>
@@ -81,23 +78,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TacheRdvRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Repository/TacheRdvRepository.php">
+      <file leaf-file-name="rdvPasse.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/tacheRdv/rdvPasse.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+            <state relative-caret-position="360">
+              <caret line="39" selection-start-line="39" selection-end-line="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlogController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/BlogController.php">
+      <file leaf-file-name="TacheRdvRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Repository/TacheRdvRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="40" column="3" selection-start-line="40" selection-start-column="3" selection-end-line="49" selection-end-column="7" />
-              <folding>
-                <element signature="e#34#71#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -154,6 +148,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -183,7 +180,6 @@
         <option value="$PROJECT_DIR$/src/Controller/TacheSportController.php" />
         <option value="$PROJECT_DIR$/templates/tacheSport/home.html.twig" />
         <option value="$PROJECT_DIR$/templates/tacheRdv/create.html.twig" />
-        <option value="$PROJECT_DIR$/templates/tacheRdv/home.html.twig" />
         <option value="$PROJECT_DIR$/config/packages/security.yaml" />
         <option value="$PROJECT_DIR$/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/templates/user/show.html.twig" />
@@ -192,11 +188,13 @@
         <option value="$PROJECT_DIR$/src/Controller/BlogController.php" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Repository/TacheRdvRepository.php" />
-        <option value="$PROJECT_DIR$/templates/accueil.html.twig" />
         <option value="$PROJECT_DIR$/src/Entity/TacheRdv.php" />
         <option value="$PROJECT_DIR$/src/Migrations/Version20190422163734.php" />
         <option value="$PROJECT_DIR$/src/Controller/MainController.php" />
+        <option value="$PROJECT_DIR$/templates/tacheRdv/rdvPasse.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/TacheRdvController.php" />
+        <option value="$PROJECT_DIR$/templates/tacheRdv/home.html.twig" />
+        <option value="$PROJECT_DIR$/templates/accueil.html.twig" />
       </list>
     </option>
   </component>
@@ -355,43 +353,13 @@
             <path>
               <item name="Organisations" type="b2602c69:ProjectViewProjectNode" />
               <item name="Organisations" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Organisations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Organisations" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Organisations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Organisations" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Organisations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Organisations" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="blog" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Organisations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Organisations" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="tacheDev" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Organisations" type="b2602c69:ProjectViewProjectNode" />
               <item name="Organisations" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="tacheRdv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Organisations" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Organisations" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="tacheSport" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Organisations" type="b2602c69:ProjectViewProjectNode" />
@@ -447,7 +415,7 @@
       <workItem from="1555852335213" duration="13766000" />
       <workItem from="1555874000100" duration="1987000" />
       <workItem from="1555891063780" duration="4621000" />
-      <workItem from="1555947718783" duration="3602000" />
+      <workItem from="1555947718783" duration="8019000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout main controller pour changer la page d'accueil">
       <created>1555895639126</created>
@@ -456,11 +424,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555895639126</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Création de 2 tableaux distinct pour les rdv :&#10;&#10;=&gt; rdv à venir &#10;=&gt; rdv passés">
+      <created>1555970593483</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1555970593483</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58494000" />
+    <option name="totallyTimeSpent" value="62911000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -475,23 +450,23 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2751678" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="8" weight="0.32905984" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32905984" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.33190882" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2751678" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="8" weight="0.32905984" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
@@ -532,7 +507,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ajout main controller pour changer la page d'accueil" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout main controller pour changer la page d'accueil" />
+    <MESSAGE value="Création de 2 tableaux distinct pour les rdv :&#10;&#10;=&gt; rdv à venir &#10;=&gt; rdv passés" />
+    <option name="LAST_COMMIT_MESSAGE" value="Création de 2 tableaux distinct pour les rdv :&#10;&#10;=&gt; rdv à venir &#10;=&gt; rdv passés" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -540,19 +516,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Repository/ArticleRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
-          <folding>
-            <element signature="e#34#57#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/var/cache/dev/twig/17/179063e112dfcd18f2bfaa750541ee17d0fba3e82e857631fcf8ad396d4b0e06.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -773,16 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="e#34#99#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/blog/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -814,20 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/TacheRdvRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tacheRdv/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="33" column="9" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190422163734.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -849,9 +788,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/TacheRdvRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/TacheRdv.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="45">
           <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
           <folding>
             <element signature="e#30#62#0#PHP" expanded="true" />
@@ -859,13 +805,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/date/date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="291" column="9" selection-start-line="291" selection-start-column="9" selection-end-line="291" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tacheRdv/rdvPasse.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="39" selection-start-line="39" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/TacheRdvController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="55" lean-forward="true" selection-start-line="55" selection-end-line="55" />
+        <state relative-caret-position="195">
+          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
           <folding>
             <element signature="e#34#72#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-150">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#34#99#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tacheRdv/home.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="48" column="76" selection-start-line="48" selection-start-column="76" selection-end-line="48" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -881,8 +858,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="70" column="17" lean-forward="true" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+        <state relative-caret-position="264">
+          <caret line="65" column="55" selection-start-line="65" selection-start-column="55" selection-end-line="65" selection-end-column="55" />
         </state>
       </provider>
     </entry>

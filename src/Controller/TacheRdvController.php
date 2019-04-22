@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\TacheRdvRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\Query\AST\WhereClause;
 use function PHPSTORM_META\type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,13 +18,30 @@ class TacheRdvController extends AbstractController
     /**
     * @Route("/tacheRdv", name="tacheRdv")
     */
-    public function index(TacheRdvRepository $repo)
+    public function index(TacheRdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date
     {
-        $tachesRdv = $repo->findAll();
+        $dateNow = date('d/m/Y');
+        $tachesRdv = $repo->findby(array(), array('date' => 'asc'));
 
         return $this->render('tacheRdv/home.html.twig', [
             'controller_name' => 'TacheRdvController',
-            'tachesRdv' => $tachesRdv
+            'tachesRdv' => $tachesRdv,
+            'dateNow' => $dateNow
+        ]);
+    }
+
+    /**
+     * @Route("/tacheRdvPasse", name="tacheRdvPasse")
+     */
+    public function rdvDejaPasse(TacheRdvRepository $repo)
+    {
+        $dateNow = date('d/m/Y');
+        $tachesRdv = $repo->findBy(array(), array('date' => 'asc'));
+
+        return $this->render('tacheRdv/rdvPasse.html.twig', [
+//            'controller_name' => 'TacheRdvController',
+            'tachesRdv' => $tachesRdv,
+            'dateNow' => $dateNow
         ]);
     }
 
