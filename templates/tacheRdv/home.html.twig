@@ -26,44 +26,41 @@
                 display: none;
             }
         }
+        .th {
+            background-color: sandybrown;
+        }
     </style>
 {% endblock %}
 
 
 {% block body %}
     <br/>
-    {#<div class="container">#}
-        {#<div class="row">#}
-            {#<div class="col-xs-12">#}
-                {#<div class="table-responsive" data-pattern="priority-columns">#}
-                    <table class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Date</th>
-                            <th>Lieu</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for tacheRdv in tachesRdv %}
-                            <tr>
-                                <td>{{ tacheRdv.type }}</td>
-                                <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
-                                <td>{{ tacheRdv.lieu }}</td>
-                                <td><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
-                                <a href="{{ path('tacheRdv_delete', {'id': tacheRdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td colspan="5" class="text-center">Ce récapitulatif vous est proposé par la CucusIncorporation</td>
-                        </tr>
-                        </tfoot>
-                    </table>
-                {#</div><!--end of .table-responsive-->#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
+        <table class="table table-bordered table-hover">
+            <thead>
+            <th class="th" colspan="4">Rendez-vous à venir</th>
+            <tr>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tacheRdv in tachesRdv if tacheRdv.date | date('d/m/Y') >= dateNow %}
+                <tr>
+                    <td>{{ tacheRdv.type }}</td>
+                    <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
+                    <td>{{ tacheRdv.lieu }}</td>
+                    <td><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('tacheRdv_delete', {'id': tacheRdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="5" class="text-center"><a href="{{ ('tacheRdvPasse') }}">Consultez les rendez-vous passés</a></td>
+                {#<td colspan="5" class="text-center">Ce récapitulatif vous est proposé par la CucusIncorporation</td>#}
+            </tr>
+            </tfoot>
+        </table>
 {% endblock %}

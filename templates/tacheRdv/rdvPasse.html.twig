@@ -29,7 +29,6 @@
         .th {
             background-color: sandybrown;
         }
-
     </style>
 {% endblock %}
 
@@ -38,47 +37,29 @@
     <br/>
     <table class="table table-bordered table-hover">
         <thead>
-        <th class="th" colspan="3">Rendez-vous récemment ajouté</th>
+        <th class="th" colspan="4">Rendez-vous passés</th>
         <tr>
             <th>Type</th>
             <th>Date</th>
             <th>Lieu</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
-        {% for tacheRdv in tachesRdv %}
+        {% for tacheRdv in tachesRdv if tacheRdv.date | date('d/m/Y') < dateNow %}
             <tr>
                 <td>{{ tacheRdv.type }}</td>
                 <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
                 <td>{{ tacheRdv.lieu }}</td>
+                <td><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
+                    <a href="{{ path('tacheRdv_delete', {'id': tacheRdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
         {% endfor %}
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="3" class="text-center"><a href= "{{ path('tacheRdv') }}" class="btn btn-primary">Voir la liste complète des rendez-vous</a></td>
-        </tr>
-        </tfoot>
-    </table>
-
-    <table class="table table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>Projet</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for tacheDev in tachesDev %}
-            <tr>
-                <td>{{ tacheDev.projectName }}</td>
-                <td>{{ tacheDev.description }} </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="5" class="text-center"><a href= "{{ path('tacheDev') }}" class="btn btn-primary">Voir la liste complète des fiches de bug</a></td>
+            {#<td colspan="5" class="text-center"><a href="{{ ('tacheRdvPasse') }}">Consultez les rendez-vous passés</a></td>#}
+            <td colspan="5" class="text-center">Ce récapitulatif vous est proposé par la CucusIncorporation</td>
         </tr>
         </tfoot>
     </table>
