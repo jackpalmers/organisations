@@ -2,12 +2,15 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
 #    providers:
 #        in_memory: { memory: ~ }
-#    firewalls:
-#        dev:
-#            pattern: ^/(_(profiler|wdt)|css|images|js)/
-#            security: false
-#        main:
-#            anonymous: true
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+#            pattern:    ^/
+#            http_basic: ~
+#            provider: our_db_provider
 
     encoders:
             App\Entity\User:
@@ -23,11 +26,6 @@ security:
                 # if you're using multiple entity managers
                 # manager_name: customer
 
-    firewalls:
-        main:
-            pattern:    ^/
-            http_basic: ~
-            provider: our_db_provider
 
             # activate different ways to authenticate
 
