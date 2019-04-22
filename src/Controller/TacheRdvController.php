@@ -2,10 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\TacheDevRepository;
 use App\Repository\TacheRdvRepository;
-//use Doctrine\DBAL\Types\TextType;
-//use Doctrine\DBAL\Types\DateType;
 use Doctrine\Common\Persistence\ObjectManager;
 use function PHPSTORM_META\type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,6 +48,9 @@ class TacheRdvController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            if (!$tacheRdv->getId())
+                $tacheRdv->setCreatedAt(new \DateTime());
+
             $manager->persist($tacheRdv);
             $manager->flush();
 

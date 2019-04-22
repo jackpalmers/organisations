@@ -19,22 +19,32 @@ class TacheRdvRepository extends ServiceEntityRepository
         parent::__construct($registry, TacheRdv::class);
     }
 
-    // /**
-    //  * @return TacheRdv[] Returns an array of TacheRdv objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+//     /**
+//      * @return TacheRdv[] Returns an array of TacheRdv objects
+//      */
+//    public function findTacheRdvOrderByDateCreation($value)
+//    {
+//        return $this->createQueryBuilder('t')
+//            ->andWhere('t.id = :id')
+//            ->setParameter('id', $value)
+//            ->orderBy('t.id', 'ASC')
+//            ->setMaxResults(3)
+//            ->getQuery()
+//            ->getResult()
+//            ;
+//    }
+//    public function findByExampleField($value)
+//    {
+//        return $this->createQueryBuilder('t')
+//            ->andWhere('t.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('t.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
+
 
     /*
     public function findOneBySomeField($value): ?TacheRdv

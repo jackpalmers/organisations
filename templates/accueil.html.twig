@@ -1,5 +1,80 @@
 {% extends 'base.html.twig' %}
 
+{% block title %} Liste des tâches {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        table {
+            text-align: center;
+        }
+
+        th {
+            font-size: 20px;
+            background-color: #AAAAAA;
+        }
+        .table-bordered {
+            border: 1px solid #ddd !important;
+        }
+
+        table caption {
+            padding: .5em 0;
+        }
+
+        @media screen and (max-width: 767px) {
+            table caption {
+                display: none;
+            }
+        }
+    </style>
+{% endblock %}
+
+
 {% block body %}
-    <h2>Bienvenue sur le super project</h2>
+    <br/>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Date</th>
+            <th>Lieu</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tacheRdv in tachesRdv %}
+            <tr>
+                <td>{{ tacheRdv.type }}</td>
+                <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
+                <td>{{ tacheRdv.lieu }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center"><a href= "{{ path('tacheRdv') }}" class="btn btn-primary">Voir la liste complète des rendez-vous</a></td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Projet</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tacheDev in tachesDev %}
+            <tr>
+                <td>{{ tacheDev.projectName }}</td>
+                <td>{{ tacheDev.description }} </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center"><a href= "{{ path('tacheDev') }}" class="btn btn-primary">Voir la liste complète des fiches de bug</a></td>
+        </tr>
+        </tfoot>
+    </table>
 {% endblock %}
