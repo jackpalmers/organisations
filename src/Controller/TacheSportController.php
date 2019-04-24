@@ -38,6 +38,7 @@ class TacheSportController extends AbstractController
             ->add('NomSport')
             ->add('Duree')
             ->add('Nombre')
+            ->add('DateSeance')
             ->getForm();
 
         $form->handleRequest($request);

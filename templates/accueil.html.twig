@@ -83,4 +83,34 @@
         </tr>
         </tfoot>
     </table>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+        <th class="th" colspan="3">Récentes activitées sportives</th>
+        <tr>
+            <th>Sport</th>
+            <th>Durée / Nombre</th>
+            <th>Date séance</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tacheSport in tachesSport %}
+            <tr>
+                {# on affiche soit le nombre soit la durée en testant si l'un des 2 champs est null #}
+                <td>{{ tacheSport.nomSport }}</td>
+                {% if tacheSport.duree is null %}
+                    <td>{{ tacheSport.nombre }} </td>
+                {% else %}
+                    <td>{{ tacheSport.duree | date('i:s') }} min</td>
+                {% endif %}
+                <td>{{ tacheSport.dateSeance | date('d/m/Y') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center"><a href= "{{ path('tacheSport') }}" class="btn btn-primary">Voir la liste complète des activités sportives</a></td>
+        </tr>
+        </tfoot>
+    </table>
 {% endblock %}

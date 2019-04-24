@@ -31,6 +31,11 @@ class TacheSport
      */
     private $Nombre;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $DateSeance;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class TacheSport
     public function setNombre(?string $Nombre): self
     {
         $this->Nombre = $Nombre;
+
+        return $this;
+    }
+
+    public function getDateSeance(): ?\DateTimeInterface
+    {
+        return $this->DateSeance;
+    }
+
+    public function setDateSeance(\DateTimeInterface $DateSeance): self
+    {
+        $this->DateSeance = $DateSeance;
 
         return $this;
     }

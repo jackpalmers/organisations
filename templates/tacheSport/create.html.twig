@@ -20,6 +20,8 @@
 
     {{ form_row(formTacheSport.Nombre, { 'attr': {'placeholder': 'Nombre'}}) }}
 
+    {{ form_row(formTacheSport.DateSeance, { 'attr': {'placeholder': 'Date'}}) }}
+
     <button type="submit" class="btn btn-success">
         {% if (editMode) %}
             Enregistrer les modifications
