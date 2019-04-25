@@ -51,6 +51,7 @@
         {% endblock %}
     </head>
     <body>
+    {% if app.user %}
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a class="navbar-brand" href="/">Accueil</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,11 +89,6 @@
                             <a href="{{ path('tacheSport') }}">Consulter les activités sportives</a>
                         </button>
                     </div>
-                    <div class="dropdown">
-                        <button class="dropbtn">
-                            <a href="{{ path('user_create') }}">Créer un utilisateur</a>
-                        </button>
-                    </div>
                     {#<li class="nav-item">#}
                         {#<a class="nav-link" href="{{ path('tacheSport') }}" onmouseover="show()">Sport</a>#}
                     {#</li>#}
@@ -121,27 +117,19 @@
                         {#<ul id="ul1" style="visibility: hidden" href="/tacheRdv">Liste rendez-vous</ul>#}
                         {#<ul id="ul2" style="visibility: hidden">Ajouter un rendez-vous</ul>#}
                     {#</li>#}
+
+                    {#<li class="nav-item">#}
+                        {#<a href="{{ path('security_login') }}" class="nav-link">Connexion</a>#}
+                    {#</li>#}
                 </ul>
-                {#<form class="form-inline my-2 my-lg-0">#}
-                    {#<input class="form-control mr-sm-2" type="text" placeholder="Search">#}
-                    {#<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>#}
-                {#</form>#}
+                <form class="form-inline my-2 my-lg-0">
+                    <a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a>
+                </form>
             </div>
         </nav>
+    {% endif %}
         <div class="container">
         {% block body %}{% endblock %}
         </div>
-        {% block javascripts %}
-            <script>
-                function show()
-                {
-                    var ul1 = document.getElementById('ul1');
-                    var ul2 = document.getElementById('ul2');
-
-                    ul1.style.visibility = "visible";
-                    ul2.style.visibility = "visible";
-                }
-            </script>
-        {% endblock %}
     </body>
 </html>
