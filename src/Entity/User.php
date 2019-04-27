@@ -14,6 +14,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     fields= {"email"},
  *     message= "L'email que vous avez indiqué est déjà utilisé"
  * )
+ * @UniqueEntity(
+ *   fields= {"username"},
+ *   message= "Le nom d'utilisateur que vous avez indiqué est déjà utilisé"
+ * )
  */
 class User implements UserInterface, \Serializable
 {
@@ -31,10 +35,11 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
      * @Assert\EqualTo(propertyPath="confirm_password")
      */
     private $password;
+// @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
+
 
     /**
      * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
