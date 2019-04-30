@@ -43,6 +43,16 @@ class TacheRdv
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $userId;
+
+    public function __toString() {
+        return $this->userId;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +114,18 @@ class TacheRdv
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?User $userId): self
+    {
+        $this->userId = $userId;
 
         return $this;
     }

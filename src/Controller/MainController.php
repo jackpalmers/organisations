@@ -16,7 +16,10 @@ class MainController extends AbstractController
      */
     public function index(TacheRdvRepository $repoTacheRdv, TacheDevRepository $repoTacheDev, TacheSportRepository $repoTacheSport)
     {
-        $tachesRdv = $repoTacheRdv->findBy(array(), array('createdAt' => 'desc'), 3);
+        // on récupère l'id de l'utilisateur connecté
+        $idUserLog = $this->getUser()->getId();
+
+        $tachesRdv = $repoTacheRdv->findBy(array('userId' => $idUserLog), array('createdAt' => 'desc'), 3);
 
         $tacheDev = $repoTacheDev->findBy(array(), array('id' => 'asc'), 3);
 

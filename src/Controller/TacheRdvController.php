@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\TacheRdvRepository;
+use App\Repository\TacheSportRepository;
+use App\Repository\UserRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Query\AST\WhereClause;
 use function PHPSTORM_META\type;
@@ -12,6 +15,7 @@ use App\Entity\TacheRdv;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class TacheRdvController extends AbstractController
 {
@@ -20,8 +24,12 @@ class TacheRdvController extends AbstractController
     */
     public function index(TacheRdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date
     {
+        // on récupère l'id de l'utilisateur connecté
+        $idUserLog = $this->getUser()->getId();
+
         $dateNow = date('d/m/Y');
-        $tachesRdv = $repo->findby(array(), array('date' => 'asc'));
+        $tachesRdv = $repo->findby(array('userId' => $idUserLog), array('date' => 'asc'));
+
 
         return $this->render('tacheRdv/home.html.twig', [
             'controller_name' => 'TacheRdvController',
@@ -35,11 +43,14 @@ class TacheRdvController extends AbstractController
      */
     public function rdvDejaPasse(TacheRdvRepository $repo)
     {
+        // on récupère l'id de l'utilisateur connecté
+        $idUserLog = $this->getUser()->getId();
+
         $dateNow = date('d/m/Y');
-        $tachesRdv = $repo->findBy(array(), array('date' => 'asc'));
+        // on récupère les taches ayant pour idUser celui de l'utilisateur connecté
+        $tachesRdv = $repo->findBy(array('userId' => $idUserLog), array('date' => 'asc'));
 
         return $this->render('tacheRdv/rdvPasse.html.twig', [
-//            'controller_name' => 'TacheRdvController',
             'tachesRdv' => $tachesRdv,
             'dateNow' => $dateNow
         ]);
@@ -56,11 +67,12 @@ class TacheRdvController extends AbstractController
 
         $form = $this->createFormBuilder($tacheRdv)
                      ->add('type')
-//                     ->add('type', TextareaType::class) -> Changer le champs à la main au lieu de laisser symfony comparer avec les propriétés de la classe
                      ->add('date', DateType::class)
                      ->add('heure')
                      ->add('lieu')
                      ->getForm();
+
+        $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
 
         $form->handleRequest($request);
 
@@ -68,6 +80,8 @@ class TacheRdvController extends AbstractController
         {
             if (!$tacheRdv->getId())
                 $tacheRdv->setCreatedAt(new \DateTime());
+
+            $tacheRdv->setUserId($idUserLog); // On passe l'object user pour pouvoir créer une tâche avec l'id du user connecté
 
             $manager->persist($tacheRdv);
             $manager->flush();
