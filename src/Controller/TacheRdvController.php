@@ -15,26 +15,24 @@ use App\Entity\TacheRdv;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class TacheRdvController extends AbstractController
 {
     /**
     * @Route("/tacheRdv", name="tacheRdv")
     */
-    public function index(TacheRdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date
+    public function index(TacheRdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
     {
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
 
-        $dateNow = date('d/m/Y');
-        $tachesRdv = $repo->findby(array('userId' => $idUserLog), array('date' => 'asc'));
+        $dateNow = new \DateTime('@'.strtotime('now'));
 
+        $tachesRdv = $repo->findTacheRdvAVenirOrderByDateDesc($dateNow, $idUserLog);
 
         return $this->render('tacheRdv/home.html.twig', [
             'controller_name' => 'TacheRdvController',
-            'tachesRdv' => $tachesRdv,
-            'dateNow' => $dateNow
+            'tachesRdv' => $tachesRdv
         ]);
     }
 
@@ -46,13 +44,13 @@ class TacheRdvController extends AbstractController
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
 
-        $dateNow = date('d/m/Y');
+        $dateNow = new \DateTime('@'.strtotime('now'));
+
         // on récupère les taches ayant pour idUser celui de l'utilisateur connecté
-        $tachesRdv = $repo->findBy(array('userId' => $idUserLog), array('date' => 'asc'));
+        $tachesRdv = $repo->findTacheRdvPasseOrderByDateDesc($dateNow, $idUserLog);
 
         return $this->render('tacheRdv/rdvPasse.html.twig', [
             'tachesRdv' => $tachesRdv,
-            'dateNow' => $dateNow
         ]);
     }
 

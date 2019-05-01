@@ -47,7 +47,6 @@
         </thead>
         <tbody>
         {% for tacheRdv in tachesRdv %}
-            {% if tacheRdv.date | date('d/m/Y') < dateNow %}
              <tr>
                 <td>{{ tacheRdv.type }}</td>
                 <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
@@ -55,7 +54,6 @@
                 <td><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
                     <a href="{{ path('tacheRdv_delete', {'id': tacheRdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
-            {% endif %}
         {% endfor %}
         </tbody>
         <tfoot>

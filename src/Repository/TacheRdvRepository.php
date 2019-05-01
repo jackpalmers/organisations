@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\TacheRdv;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
+use App\Entity\User;
 
 /**
  * @method TacheRdv|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,36 @@ class TacheRdvRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, TacheRdv::class);
+    }
+
+     /**
+      * @return TacheRdv[] On récupère un tableau de tacheRdv pour chaque utilisateur où la date du rdv est supérieur à la date actuelle (Rdv à venir)
+      */
+    public function findTacheRdvAVenirOrderByDateDesc($dateNow, $userId)
+    {
+        return $this->createQueryBuilder('t')
+            ->AndWhere('t.date >= :dateNow')
+            ->AndWhere('t.userId = :userId')
+            ->orderBy('t.date', 'DESC')
+            ->setParameter('dateNow', $dateNow)
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return TacheRdv[] On récupère un tableau de tacheRdv pour chaque utilisateur où la date du rdv est inférieur à la date actuelle (Rdv passé)
+     */
+    public function findTacheRdvPasseOrderByDateDesc($dateNow, $userId)
+    {
+        return $this->createQueryBuilder('t')
+            ->AndWhere('t.date <= :dateNow')
+            ->AndWhere('t.userId = :userId')
+            ->orderBy('t.date', 'Desc')
+            ->setParameter('dateNow', $dateNow)
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
     }
 
 //     /**

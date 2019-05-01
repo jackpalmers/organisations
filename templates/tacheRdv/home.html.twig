@@ -46,7 +46,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for tacheRdv in tachesRdv if tacheRdv.date | date('d/m/Y') >= dateNow %}
+            {% for tacheRdv in tachesRdv %}
                 <tr>
                     <td>{{ tacheRdv.type }}</td>
                     <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
