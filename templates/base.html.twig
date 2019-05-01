@@ -52,8 +52,8 @@
     </head>
     <body>
     {% if app.user %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="/"><img src="{{ asset('Organisations/css/img/chat_accueil.png') }}" alt=""/></a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary"> {# Prendre l'image .ico et non l'image .png => le fond blanc de l'image n'est pas pris dans l'image .ico #}
+            <a class="navbar-brand" href="/"><img src="{{ asset('images/iconfinder_cat_upsidedown_185521.ico') }}" style="width: 60px;" alt=""/></a> {# route : public/images/chat_accueil.ico #}
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -123,9 +123,22 @@
                     {#</li>#}
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <a class="nav-link">Bonjour {{ app.user.username }}</a>
-                    <a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a>
+                    <div class="dropdown">
+                        <img src="{{ asset('images/double_engrenage.ico') }}" style="width:80px;" alt="" class="dropbtn"></img>
+                        {#<button class="dropbtn"><img src="{{ asset('images/double_engrenage.ico') }}" style="width:60px;" alt=""></button>#}
+                        <div class="dropdown-content">
+                            {# Routes à créer #}
+                            <a class="nav-link" href="{{ path('tacheDev_create') }}">Paramètres</a>
+                            <a class="nav-link" href="{{ path('tacheSport_create') }}">Déconnexion</a>
+                        </div>
+                    </div>
+                    {#<a class="nav-link">Bonjour {{ app.user.username }}</a>#}
+                    {#<a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a>#}
                 </form>
+                {#<form class="form-inline my-2 my-lg-0">#}
+                    {#<a class="nav-link">Bonjour {{ app.user.username }}</a>#}
+                    {#<a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a>#}
+                {#</form>#}
             </div>
         </nav>
     {% endif %}

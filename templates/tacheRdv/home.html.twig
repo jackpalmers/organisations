@@ -46,20 +46,25 @@
             </tr>
             </thead>
             <tbody>
-            {% for tacheRdv in tachesRdv %}
+            {% if tachesRdv is not empty %}
+                {% for tacheRdv in tachesRdv %}
+                    <tr>
+                        <td>{{ tacheRdv.type }}</td>
+                        <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
+                        <td>{{ tacheRdv.lieu }}</td>
+                        <td><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ path('tacheRdv_delete', {'id': tacheRdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
                 <tr>
-                    <td>{{ tacheRdv.type }}</td>
-                    <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
-                    <td>{{ tacheRdv.lieu }}</td>
-                    <td><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
-                    <a href="{{ path('tacheRdv_delete', {'id': tacheRdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                    <td colspan="5" class="text-center">Aucun rendez-vous à venir trouvé</td>
                 </tr>
-            {% endfor %}
+            {% endif %}
             </tbody>
             <tfoot>
             <tr>
                 <td colspan="5" class="text-center"><a href="{{ ('tacheRdvPasse') }}">Consultez les rendez-vous passés</a></td>
-                {#<td colspan="5" class="text-center">Ce récapitulatif vous est proposé par la CucusIncorporation</td>#}
             </tr>
             </tfoot>
         </table>
