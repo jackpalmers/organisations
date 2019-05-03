@@ -2,13 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Repository\TacheRdvRepository;
-use App\Repository\TacheSportRepository;
-use App\Repository\UserRepository;
 use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\ORM\Query\AST\WhereClause;
-use function PHPSTORM_META\type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\TacheRdv;
@@ -120,6 +115,6 @@ class TacheRdvController extends AbstractController
         $response = new Response();
         $response->send();
 
-        return $this->redirectToRoute('tacheRdv');
+        return $this->redirectToRoute('tacheRdvAVenir');
     }
 }
