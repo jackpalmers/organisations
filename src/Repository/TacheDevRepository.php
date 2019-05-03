@@ -20,31 +20,15 @@ class TacheDevRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return TacheDev[] Returns an array of TacheDev objects
+    //  * @return TacheDev[] On récupère un tableau de tacheDev pour chaque utilisateur
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findTacheDevByUser($userId)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('t.userId = :userId')
+            ->setParameter('userId', $userId)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?TacheDev
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

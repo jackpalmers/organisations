@@ -36,6 +36,12 @@ class TacheSport
      */
     private $DateSeance;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $userId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +91,18 @@ class TacheSport
     public function setDateSeance(\DateTimeInterface $DateSeance): self
     {
         $this->DateSeance = $DateSeance;
+
+        return $this;
+    }
+
+    public function getUserId(): ?User
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(?User $userId): self
+    {
+        $this->userId = $userId;
 
         return $this;
     }

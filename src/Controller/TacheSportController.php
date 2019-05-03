@@ -17,7 +17,9 @@ class TacheSportController extends AbstractController
      */
     public function index(TacheSportRepository $repo)
     {
-        $tachesSport = $repo->findAll();
+        $idUserLog = $this->getUser()->getId();
+
+        $tachesSport = $repo->findActiviteSportiveByUser($idUserLog);
 
         return $this->render('tacheSport/home.html.twig', [
             'controller_name' => 'TacheSportController',
@@ -41,10 +43,15 @@ class TacheSportController extends AbstractController
             ->add('DateSeance')
             ->getForm();
 
+        $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
+
+            $tacheSport->setUserId($idUserLog); // On passe l'object user pour pouvoir créer une tâche avec l'id du user connecté
+
             $manager->persist($tacheSport);
             $manager->flush();
 

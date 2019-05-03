@@ -18,7 +18,11 @@ class TacheDevController extends AbstractController
      */
     public function index(TacheDevRepository $repo)
     {
-        $tachesDev = $repo->findAll();
+        // on récupère l'id de l'utilisateur connecté
+        $idUserLog = $this->getUser()->getId();
+
+        $tachesDev = $repo->findTacheDevByUser($idUserLog);
+
 
         return $this->render('tacheDev/home.html.twig', [
             'controller_name' => 'TacheDevController',
@@ -40,10 +44,15 @@ class TacheDevController extends AbstractController
             ->add('description', TextareaType::class)
             ->getForm();
 
+        $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
+
+            $tacheDev->setUserId($idUserLog); // On passe l'object user pour pouvoir créer une tâche avec l'id du user connecté
+
             $manager->persist($tacheDev);
             $manager->flush();
 

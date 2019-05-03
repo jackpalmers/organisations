@@ -20,31 +20,15 @@ class TacheSportRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return TacheSport[] Returns an array of TacheSport objects
+    //  * @return TacheSport[] On récupère un tableau d'activité sportive pour chaque utilisateur
     //  */
-    /*
-    public function findByExampleField($value)
+    public function findActiviteSportiveByUser($userId)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('t.userId = :userId')
+            ->setParameter('userId', $userId)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?TacheSport
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
