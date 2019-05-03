@@ -14,8 +14,6 @@
 
     {{ form_start(formTacheRdv) }}
 
-    {#{{ form_widget(formTacheRdv) }}#}
-
     {{ form_row(formTacheRdv.type, { 'attr': {'placeholder': 'Type de rendez-vous'}}) }}
 
     {{ form_row(formTacheRdv.date, { 'attr': {'placeholder': 'Date'}}) }}
@@ -33,22 +31,5 @@
     </button>
 
     {{ form_end(formTacheRdv) }}
-
-    {#<div class="form-group">#}
-        {#<label for="">Type</label>#}
-        {#{{ form_widget(formTacheRdv.type) }}#}
-    {#</div>#}
-
-    {#<div class="form-group">#}
-        {#<label for="">Date</label>#}
-        {#{{ form_widget(formTacheRdv.date) }}#}
-    {#</div>#}
-
-    {#<div class="form-group">#}
-        {#<label for="">Lieu</label>#}
-        {#{{ form_widget(formTacheRdv.lieu) }}#}
-    {#</div>#}
-
-    {#{{ form_end(formTacheRdv) }}#}
 
 {% endblock %}

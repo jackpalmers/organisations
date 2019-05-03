@@ -48,24 +48,12 @@ class TacheSportController extends AbstractController
             $manager->persist($tacheSport);
             $manager->flush();
 
-            return $this->redirectToRoute('tacheSport_show', [
-                'id' => $tacheSport->getId()
-            ]);
+            return $this->redirectToRoute('tacheSport');
         }
 
         return $this->render('tacheSport/create.html.twig', [
             'formTacheSport' => $form->createView(),
             'editMode' => $tacheSport->getId() !== null
-        ]);
-    }
-
-    /**
-     * @Route("/tacheSport/{id}", name="tacheSport_show")
-     */
-    public function show(TacheSport $tacheSport)
-    {
-        return $this->render('tacheSport/show.html.twig', [
-            'tacheSport' => $tacheSport
         ]);
     }
 

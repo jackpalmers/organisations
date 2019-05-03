@@ -54,4 +54,12 @@ class SecurityController extends AbstractController
     {
 
     }
+
+    /**
+     * @Route("/parametrage", name="user_manage")
+     */
+    public function userManege()
+    {
+        return $this->render('security/userManage.html.twig');
+    }
 }

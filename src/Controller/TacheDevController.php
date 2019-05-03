@@ -47,24 +47,12 @@ class TacheDevController extends AbstractController
             $manager->persist($tacheDev);
             $manager->flush();
 
-            return $this->redirectToRoute('tacheDev_show', [
-                'id' => $tacheDev->getId()
-            ]);
+            return $this->redirectToRoute('tacheDev');
         }
 
         return $this->render('tacheDev/create.html.twig', [
             'formTacheDev' => $form->createView(),
             'editMode' => $tacheDev->getId() !== null
-        ]);
-    }
-
-    /**
-     * @Route("/tacheDev/{id}", name="tacheDev_show")
-     */
-    public function show(TacheDev $tacheDev)
-    {
-        return $this->render('tacheDev/show.html.twig', [
-            'tacheDev' => $tacheDev
         ]);
     }
 

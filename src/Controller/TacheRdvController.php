@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 class TacheRdvController extends AbstractController
 {
     /**
-    * @Route("/tacheRdv", name="tacheRdv")
+    * @Route("/tacheRdvAVenir", name="tacheRdvAVenir")
     */
     public function index(TacheRdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
     {
@@ -30,7 +30,7 @@ class TacheRdvController extends AbstractController
 
         $tachesRdv = $repo->findTacheRdvAVenirOrderByDateDesc($dateNow, $idUserLog);
 
-        return $this->render('tacheRdv/home.html.twig', [
+        return $this->render('tacheRdv/rdvAVenir.html.twig', [
             'controller_name' => 'TacheRdvController',
             'tachesRdv' => $tachesRdv
         ]);
@@ -84,9 +84,10 @@ class TacheRdvController extends AbstractController
             $manager->persist($tacheRdv);
             $manager->flush();
 
-            return $this->redirectToRoute('tacheRdv_show', [
-                'id' => $tacheRdv->getId()
-            ]);
+            return $this->redirectToRoute('tacheRdvAVenir');
+//            return $this->redirectToRoute('tacheRdv_show', [
+//                'id' => $tacheRdv->getId()
+//            ]);
         }
 
         return $this->render('tacheRdv/create.html.twig', [
@@ -95,15 +96,16 @@ class TacheRdvController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/tacheRdv/{id}", name="tacheRdv_show")
-     */
-    public function show(TacheRdv $tacheRdv)
-    {
-        return $this->render('tacheRdv/show.html.twig', [
-            'tacheRdv' => $tacheRdv
-        ]);
-    }
+    // Plus utilisé (à voir à l'avenir)
+//    /**
+//     * @Route("/tacheRdv/{id}", name="tacheRdv_show")
+//     */
+//    public function show(TacheRdv $tacheRdv)
+//    {
+//        return $this->render('tacheRdv/show.html.twig', [
+//            'tacheRdv' => $tacheRdv
+//        ]);
+//    }
 
     /**
      * @Route("/tacheRdv/{id}/delete", name="tacheRdv_delete")

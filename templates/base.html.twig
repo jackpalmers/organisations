@@ -39,6 +39,12 @@
                     display: block;
                 }
 
+                /* Used to open the last item(right item) of the navbar (dropdown-content) on the left */
+                .listRight {
+                    left: auto !important;
+                    right: 0 !important;
+                }
+
                 /* Change color of dropdown links on hover */
                 /*.dropdown-content a:hover {background-color: #ddd;}*/
 
@@ -60,12 +66,6 @@
 
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
-                    {#<li class="nav-item active">#}
-                        {#<a class="nav-link" href="{{ path('blog') }}">Articles</a>#}
-                    {#</li>#}
-                    {#<li class="nav-item">#}
-                        {#<a class="nav-link" href="*">Créer un article</a>#}
-                    {#</li>#}
                     <div class="dropdown">
                         <button class="dropbtn">Ajouter une tâche</button>
                         <div class="dropdown-content">
@@ -76,7 +76,7 @@
                     </div>
                     <div class="dropdown">
                         <button class="dropbtn">
-                            <a href="{{ path('tacheRdv') }}">Consulter les rendez-vous</a>
+                            <a href="{{ path('tacheRdvAVenir') }}">Consulter les rendez-vous</a>
                         </button>
                     </div>
                     <div class="dropdown">
@@ -104,41 +104,17 @@
                     {#<li class="nav-item">#}
                         {#<a class="nav-link" href="{{ path('tacheDev_create') }}" onmouseover="show()">Créer une fiche développement</a>#}
                     {#</li>#}
-
-
-                    {#<li class="nav-item">#}
-                            {#<a class="nav-link" href="{{ path('tacheRdv_create') }}" onmouseover="show()">Créer un rendez-vous</a>#}
-                        {#</li>#}
-                        {#<li class="nav-item">#}
-                            {#<a class="nav-link" href="{{ path('tacheDev_create') }}" onmouseover="show()">Créer une fiche développement</a>#}
-                        {#</li>#}
-                    {#<li class="nav-item nav-link" onmouseover="show()"> Rendez-vous#}
-                        {#<a class=""  ></a>#}
-                        {#<ul id="ul1" style="visibility: hidden" href="/tacheRdv">Liste rendez-vous</ul>#}
-                        {#<ul id="ul2" style="visibility: hidden">Ajouter un rendez-vous</ul>#}
-                    {#</li>#}
-
-                    {#<li class="nav-item">#}
-                        {#<a href="{{ path('security_login') }}" class="nav-link">Connexion</a>#}
-                    {#</li>#}
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
+                    <a class="nav-link">Bonjour {{ app.user.username }}</a>
                     <div class="dropdown">
                         <img src="{{ asset('images/double_engrenage.ico') }}" style="width:80px;" alt="" class="dropbtn"></img>
-                        {#<button class="dropbtn"><img src="{{ asset('images/double_engrenage.ico') }}" style="width:60px;" alt=""></button>#}
-                        <div class="dropdown-content">
-                            {# Routes à créer #}
-                            <a class="nav-link" href="{{ path('tacheDev_create') }}">Paramètres</a>
-                            <a class="nav-link" href="{{ path('tacheSport_create') }}">Déconnexion</a>
+                        <div class="dropdown-content listRight">
+                            <a class="nav-link" href="{{ path('user_manage') }}">Paramètres</a>
+                            <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
                         </div>
                     </div>
-                    {#<a class="nav-link">Bonjour {{ app.user.username }}</a>#}
-                    {#<a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a>#}
                 </form>
-                {#<form class="form-inline my-2 my-lg-0">#}
-                    {#<a class="nav-link">Bonjour {{ app.user.username }}</a>#}
-                    {#<a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a>#}
-                {#</form>#}
             </div>
         </nav>
     {% endif %}
