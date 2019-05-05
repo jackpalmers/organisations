@@ -21,9 +21,9 @@ class MainController extends AbstractController
 
         $tachesRdv = $repoTacheRdv->findBy(array('userId' => $idUserLog), array('createdAt' => 'desc'), 3);
 
-        $tacheDev = $repoTacheDev->findBy(array(), array('id' => 'asc'), 3);
+        $tacheDev = $repoTacheDev->findBy(array('userId' => $idUserLog), array('id' => 'asc'), 3);
 
-        $tacheSport = $repoTacheSport->findBy(array(), array('id' => 'asc'), 3);
+        $tacheSport = $repoTacheSport->findBy(array('userId' => $idUserLog), array('id' => 'asc'), 3);
 
         return $this->render('accueil.html.twig', [
             'controller_name' => 'TacheRdvController',

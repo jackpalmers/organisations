@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\TacheRdv;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use App\Entity\User;
 
 /**
  * @method TacheRdv|null find($id, $lockMode = null, $lockVersion = null)
