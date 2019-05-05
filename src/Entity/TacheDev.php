@@ -27,10 +27,22 @@ class TacheDev
     private $Description;
 
     /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $Note;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Etat;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $userId;
+
+
 
     public function getId(): ?int
     {
@@ -57,6 +69,30 @@ class TacheDev
     public function setDescription(string $Description): self
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->Note;
+    }
+
+    public function setNote(?string $Note): self
+    {
+        $this->Note = $Note;
+
+        return $this;
+    }
+
+    public function getEtat(): ?int
+    {
+        return $this->Etat;
+    }
+
+    public function setEtat(int $Etat): self
+    {
+        $this->Etat = $Etat;
 
         return $this;
     }

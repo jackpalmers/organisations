@@ -41,7 +41,7 @@ class TacheRdvRepository extends ServiceEntityRepository
     public function findTacheRdvPasseOrderByDateDesc($dateNow, $userId)
     {
         return $this->createQueryBuilder('t')
-            ->AndWhere('t.date <= :dateNow')
+            ->AndWhere('t.date < :dateNow')
             ->AndWhere('t.userId = :userId')
             ->orderBy('t.date', 'Desc')
             ->setParameter('dateNow', $dateNow)

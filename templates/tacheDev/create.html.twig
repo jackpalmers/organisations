@@ -18,6 +18,11 @@
 
     {{ form_row(formTacheDev.description, { 'attr': {'placeholder': 'Description'}}) }}
 
+    {{ form_row(formTacheDev.note, { 'attr': {'placeholder': 'Notes'}}) }}
+
+    {% if (editMode) %}
+        {{ form_row(formTacheDev.etat) }}
+    {% endif %}
     <button type="submit" class="btn btn-success">
         {% if (editMode) %}
             Enregistrer les modifications

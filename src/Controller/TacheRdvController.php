@@ -43,7 +43,8 @@ class TacheRdvController extends AbstractController
 
         // on récupère les taches ayant pour idUser celui de l'utilisateur connecté
         $tachesRdv = $repo->findTacheRdvPasseOrderByDateDesc($dateNow, $idUserLog);
-
+        dump($tachesRdv);
+        dump($dateNow);
         return $this->render('tacheRdv/rdvPasse.html.twig', [
             'tachesRdv' => $tachesRdv,
         ]);

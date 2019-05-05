@@ -3,13 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\TacheDev;
+use App\Form\TacheDevType;
 use App\Repository\TacheDevRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class TacheDevController extends AbstractController
 {
@@ -39,18 +40,28 @@ class TacheDevController extends AbstractController
         if (!$tacheDev)
             $tacheDev = new TacheDev();
 
-        $form = $this->createFormBuilder($tacheDev)
-            ->add('projectName')
-            ->add('description', TextareaType::class)
-            ->getForm();
+        $form = $this->createForm(TacheDevType::class, $tacheDev);
 
-        $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
+        if($tacheDev->getId() != null) // Regarder pourquoi le test de l'id à null fonctionne alors que le test (!$tachesDev) ne fonctionne pas pour afficher le select en editMode
+        {
+           $form->add('etat',  ChoiceType::class, [
+               'choices' => [
+                   'En cours' => 0,
+                   'Terminée' => 1,
+                   'Fermée' => 2
+               ]
+           ]);
+        }
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
+//            if(!$tacheDev)
+            if($tacheDev->getId() == null)
+                $tacheDev->setEtat(0); // on met l'état de la fiche de bug à 0 (en cours) lors de sa création
 
+            $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
             $tacheDev->setUserId($idUserLog); // On passe l'object user pour pouvoir créer une tâche avec l'id du user connecté
 
             $manager->persist($tacheDev);
@@ -61,7 +72,7 @@ class TacheDevController extends AbstractController
 
         return $this->render('tacheDev/create.html.twig', [
             'formTacheDev' => $form->createView(),
-            'editMode' => $tacheDev->getId() !== null
+            'editMode' => $tacheDev->getId() !== null,
         ]);
     }
 

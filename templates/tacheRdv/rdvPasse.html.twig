@@ -52,7 +52,7 @@
                     <td>{{ tacheRdv.type }}</td>
                     <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
                     <td>{{ tacheRdv.lieu }}</td>
-                    <td><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
+                    <td style="width: 250px;"><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
                         <a href="{{ path('tacheRdv_delete', {'id': tacheRdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
                 </tr>
             {% endfor %}

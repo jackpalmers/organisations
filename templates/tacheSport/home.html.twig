@@ -51,7 +51,7 @@
                     <td>{{ tacheSport.duree | date('i:s') }} min</td>
                 {% endif %}
                 <td>{{ tacheSport.dateSeance | date('d/m/Y') }}</td>
-                <td><a href="{{ path('tacheSport_edit', {'id': tacheSport.id}) }}" class="btn btn-primary">Modifier</a>
+                <td style="width: 250px;"><a href="{{ path('tacheSport_edit', {'id': tacheSport.id}) }}" class="btn btn-primary">Modifier</a>
                     <a href="{{ path('tacheSport_delete', {'id': tacheSport.id}) }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
         {% endfor %}

@@ -26,26 +26,41 @@
                 display: none;
             }
         }
+        .th {
+            background-color: sandybrown;
+        }
     </style>
 {% endblock %}
 
 
 {% block body %}
     <br/>
+    <th>0 (Jaune) = En cours, 1 (Vert) = Fait, 2 (Rouge) = Fermé</th>
     <table class="table table-bordered table-hover">
         <thead>
+        <th class="th" colspan="4">Fiches de bug</th>
         <tr>
             <th>Projet</th>
             <th>Description</th>
+            <th>Notes supplémentaires</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         {% for tacheDev in tachesDev %}
-            <tr>
+
+            {% if tacheDev.etat == 0 %}
+                <tr style="background-color: #ffcc00">
+            {% elseif tacheDev.etat == 1 %}
+                <tr style="background-color: #1e7e34">
+            {% elseif tacheDev.etat == 2 %}
+                <tr style="background-color: #bd2130">
+            {% endif %}
+
                 <td>{{ tacheDev.projectName }}</td>
                 <td>{{ tacheDev.description }}</td>
-                <td><a href="{{ path('tacheDev_edit', {'id': tacheDev.id}) }}" class="btn btn-primary">Modifier</a>
+                <td style="width: 300px;">{{ tacheDev.note }}</td>
+                <td style="width: 250px;"><a href="{{ path('tacheDev_edit', {'id': tacheDev.id}) }}" class="btn btn-primary">Modifier</a>
                 <a href="{{ path('tacheDev_delete', {'id': tacheDev.id}) }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
         {% endfor %}
