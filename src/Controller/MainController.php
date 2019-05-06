@@ -17,7 +17,10 @@ class MainController extends AbstractController
     public function index(TacheRdvRepository $repoTacheRdv, TacheDevRepository $repoTacheDev, TacheSportRepository $repoTacheSport)
     {
         // on récupère l'id de l'utilisateur connecté
-        $idUserLog = $this->getUser()->getId();
+        if ($this->getUser())
+            $idUserLog = $this->getUser()->getId();
+        else
+            return $this->redirectToRoute('security_login');
 
         $tachesRdv = $repoTacheRdv->findBy(array('userId' => $idUserLog), array('createdAt' => 'desc'), 3);
 
@@ -25,11 +28,14 @@ class MainController extends AbstractController
 
         $tacheSport = $repoTacheSport->findBy(array('userId' => $idUserLog), array('id' => 'asc'), 3);
 
-        return $this->render('accueil.html.twig', [
-            'controller_name' => 'TacheRdvController',
-            'tachesRdv' => $tachesRdv,
-            'tachesDev' => $tacheDev,
-            'tachesSport' => $tacheSport
-        ]);
+        if ($idUserLog)
+        {
+            return $this->render('accueil.html.twig', [
+                'controller_name' => 'TacheRdvController',
+                'tachesRdv' => $tachesRdv,
+                'tachesDev' => $tacheDev,
+                'tachesSport' => $tacheSport
+            ]);
+        }
     }
 }

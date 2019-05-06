@@ -54,7 +54,8 @@
         <div class="container-login100">
             <div class="wrap-login100">
                 <form class="login100-form validate-form" action="{{ path('security_login') }}" method="post">
-                    {% if error %}
+
+                    {% if app.user and error %} {# on test la variable user dans le cas où l'utilisateur n'est pas connecté (= la variable erreur n'existera pas) #}
                     <span class="login100-form-title p-b-34" style="color:red;">Informations saisies incorrect</span>
                     {% endif %}
                         <span class="login100-form-title p-b-34">Connexion</span>
