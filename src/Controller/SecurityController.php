@@ -28,6 +28,7 @@ class SecurityController extends AbstractController
         {
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
+            $user->setIsActive(1);
 
             $manager->persist($user);
             $manager->flush();
@@ -65,6 +66,9 @@ class SecurityController extends AbstractController
      */
     public function userManege()
     {
-        return $this->render('security/userManage.html.twig');
+        $user = $this->getUser();
+        return $this->render('security/userManage.html.twig', [
+            'user' => $user
+        ]);
     }
 }
