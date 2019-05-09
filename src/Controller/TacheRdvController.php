@@ -14,9 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 class TacheRdvController extends AbstractController
 {
     /**
-    * @Route("/tacheRdvAVenir", name="tacheRdvAVenir")
+    * @Route("/tacheRdvAVenir", name="tacheRdvAVenir", requirements={"page"="\d+"})
     */
-    public function index(TacheRdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
+    public function showRdvAVenir(TacheRdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
     {
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
@@ -34,7 +34,7 @@ class TacheRdvController extends AbstractController
     /**
      * @Route("/tacheRdvPasse", name="tacheRdvPasse")
      */
-    public function rdvDejaPasse(TacheRdvRepository $repo)
+    public function showRdvDejaPasse(TacheRdvRepository $repo)
     {
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
@@ -43,21 +43,35 @@ class TacheRdvController extends AbstractController
 
         // on récupère les taches ayant pour idUser celui de l'utilisateur connecté
         $tachesRdv = $repo->findTacheRdvPasseOrderByDateDesc($dateNow, $idUserLog);
-        dump($tachesRdv);
-        dump($dateNow);
+
         return $this->render('tacheRdv/rdvPasse.html.twig', [
             'tachesRdv' => $tachesRdv,
         ]);
     }
 
     /**
-     * @Route("/tacheRdv/new", name="tacheRdv_create")
-     * @Route("/tacheRdv/{id}/edit", name="tacheRdv_edit")
+     * @Route("/tacheRdv/new", name="tacheRdv_create", requirements={"page"="\d+"})
+     * @Route("/tacheRdv/{id<\d+>}/edit", name="tacheRdv_edit")
      */
-    public function form(TacheRdv $tacheRdv = null, Request $request, ObjectManager $manager)
+    // "<\d+>" permet de gérer les cas de string passés dans l'url à la place de l'id
+    public function form(TacheRdvRepository $repo, TacheRdv $tacheRdv = null, Request $request, ObjectManager $manager)
     {
         if (!$tacheRdv)
             $tacheRdv = new TacheRdv();
+
+        // on test si l'id de la tâche passé en get existe en base
+        $idTache = $request->get('id');
+        $tacheExist = $repo->isTacheRdvExistById($idTache);
+
+        // si la tâche n'existe pas et que nous ne sommes pas en création de tâche (getRequestUri renvoie l'url actuelle)
+        if (empty($tacheExist) && $request->getRequestUri() != '/tacheRdv/new')
+            throw new \Exception('Page introuvable (Tâche non existante en base)');
+
+        // si ma tâche existe et que l'utilisateur de la tâche est l'utilisateur connecté
+        if ($tacheExist && $tacheRdv->getUserId() != $this->getUser())
+        {
+            throw new \Exception('Page introuvable (Tâche lié à un autre utilisateur)');
+        }
 
         $form = $this->createFormBuilder($tacheRdv)
                      ->add('type')
@@ -79,6 +93,7 @@ class TacheRdvController extends AbstractController
 
             $manager->persist($tacheRdv);
             $manager->flush();
+            $manager->refresh();
 
             return $this->redirectToRoute('tacheRdvAVenir');
 //            return $this->redirectToRoute('tacheRdv_show', [
@@ -89,6 +104,7 @@ class TacheRdvController extends AbstractController
         return $this->render('tacheRdv/create.html.twig', [
             'formTacheRdv' => $form->createView(),
             'editMode' => $tacheRdv->getId() !== null
+//            'userId' => $tacheRdv->getUserId()
         ]);
     }
 

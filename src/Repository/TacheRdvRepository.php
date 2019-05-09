@@ -49,6 +49,18 @@ class TacheRdvRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return TacheRdv On récupère l'id d'une tâche pour tester son existance (utilisé pour vérifier si l'id passé en get d'une tâche est valide ou non)
+     */
+    public function isTacheRdvExistById($id)
+    {
+        return $this->createQueryBuilder('t')
+            ->AndWhere('t.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+    }
+
 //     /**
 //      * @return TacheRdv[] Returns an array of TacheRdv objects
 //      */
