@@ -35,16 +35,8 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=64)
-     * @Assert\EqualTo(propertyPath="confirm_password")
      */
     private $password;
-// @Assert\Length(min="8", minMessage="Votre mot de passe doit faire minimum 8 caractères")
-
-
-    /**
-     * @Assert\EqualTo(propertyPath="password", message="Vous n'avez pas tapé le même mot de passe")
-     */
-    public $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=254, unique=true)

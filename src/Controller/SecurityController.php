@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Form\RegistrationType;
+use App\Form\UserManageType;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
@@ -64,11 +66,26 @@ class SecurityController extends AbstractController
     /**
      * @Route("/parametrage", name="user_manage")
      */
-    public function userManege()
+    public function userManage(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder, UserRepository $repo)
     {
-        $user = $this->getUser();
+        $userLog = $this->getUser();
+        $user = $repo->getUserById($userLog->getId());
+
+        $form = $this->createForm(UserManageType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
+
+            $manager->persist($user);
+            $manager->flush();
+        }
+
         return $this->render('security/userManage.html.twig', [
-            'user' => $user
+            'form' => $form->createView()
         ]);
     }
 }
