@@ -12,6 +12,7 @@
         {% endif %}
     </h1>
 
+    {#
     {{ form_start(formTacheDev) }}
 
     {{ form_row(formTacheDev.projectName, { 'attr': {'placeholder': 'Nom du projet'}}) }}
@@ -31,6 +32,8 @@
         {% endif %}
     </button>
 
-    {{ form_end(formTacheDev) }}
+    {{ form_end(formTacheDev) }}#}
+    {{ form(formTacheDev) }}
+
 
 {% endblock %}

@@ -50,7 +50,7 @@ class TacheRdvController extends AbstractController
     }
 
     /**
-     * @Route("/tacheRdv/new", name="tacheRdv_create", requirements={"page"="\d+"})
+     * @Route("/tacheRdv/new", name="tacheRdv_create")
      * @Route("/tacheRdv/{id<\d+>}/edit", name="tacheRdv_edit")
      */
     // "<\d+>" permet de gérer les cas de string passés dans l'url à la place de l'id
@@ -62,7 +62,7 @@ class TacheRdvController extends AbstractController
         // on test si l'id de la tâche passé en get existe en base
         $idTache = $request->get('id');
         $tacheExist = $repo->isTacheRdvExistById($idTache);
-
+//
         // si la tâche n'existe pas et que nous ne sommes pas en création de tâche (getRequestUri renvoie l'url actuelle)
         if (empty($tacheExist) && $request->getRequestUri() != '/tacheRdv/new')
             throw new \Exception('Page introuvable (Tâche non existante en base)');
@@ -104,7 +104,6 @@ class TacheRdvController extends AbstractController
         return $this->render('tacheRdv/create.html.twig', [
             'formTacheRdv' => $form->createView(),
             'editMode' => $tacheRdv->getId() !== null
-//            'userId' => $tacheRdv->getUserId()
         ]);
     }
 

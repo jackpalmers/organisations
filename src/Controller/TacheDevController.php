@@ -34,13 +34,17 @@ class TacheDevController extends AbstractController
     /**
      * @Route("/tacheDev/new", name="tacheDev_create")
      * @Route("/tacheDev/{id}/edit", name="tacheDev_edit")
+     * @param TacheDev|null $tacheDev
+     * @param Request $request
+     * @param ObjectManager $manager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
     public function form(TacheDev $tacheDev = null, Request $request, ObjectManager $manager)
     {
         if (!$tacheDev)
             $tacheDev = new TacheDev();
 
-        $form = $this->createForm(TacheDevType::class, $tacheDev);
+        $form = $this->createForm(TacheDevType::class, $tacheDev, ['theOption' => false]);
 
         if($tacheDev->getId() != null) // Regarder pourquoi le test de l'id à null fonctionne alors que le test (!$tachesDev) ne fonctionne pas pour afficher le select en editMode
         {

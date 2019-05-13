@@ -22,7 +22,7 @@ class TacheSportController extends AbstractController
         $tachesSport = $repo->findActiviteSportiveByUser($idUserLog);
 
         return $this->render('tacheSport/home.html.twig', [
-            'controller_name' => 'TacheSportController',
+            'controller_name' => 'UserManageType',
             'tachesSport' => $tachesSport
         ]);
     }
