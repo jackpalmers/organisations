@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\TacheRdvRepository;
+use App\Repository\RdvRepository;
 use App\Repository\FicheBugRepository;
 use App\Repository\TacheSportRepository;
 
@@ -14,7 +14,7 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="accueil")
      */
-    public function index(TacheRdvRepository $repoTacheRdv, FicheBugRepository $repoFicheBug, TacheSportRepository $repoTacheSport)
+    public function index(RdvRepository $repoRdv, FicheBugRepository $repoFicheBug, TacheSportRepository $repoTacheSport)
     {
         // on récupère l'id de l'utilisateur connecté
         if ($this->getUser())
@@ -22,7 +22,7 @@ class MainController extends AbstractController
         else
             return $this->redirectToRoute('security_login');
 
-        $tachesRdv = $repoTacheRdv->findBy(array('userId' => $idUserLog), array('createdAt' => 'desc'), 3);
+        $rdvs = $repoRdv->findBy(array('userId' => $idUserLog), array('createdAt' => 'desc'), 3);
 
         $fichesBug = $repoFicheBug->findBy(array('userId' => $idUserLog), array('id' => 'asc'), 3);
 
@@ -31,8 +31,8 @@ class MainController extends AbstractController
         if ($idUserLog)
         {
             return $this->render('accueil.html.twig', [
-                'controller_name' => 'TacheRdvController',
-                'tachesRdv' => $tachesRdv,
+                'controller_name' => 'RdvController',
+                'rdvs' => $rdvs,
                 'fichesBug' => $fichesBug,
                 'tachesSport' => $tachesSport
             ]);

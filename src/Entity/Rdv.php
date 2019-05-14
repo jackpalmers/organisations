@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TacheRdvRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\RdvRepository")
  */
-class TacheRdv
+class Rdv
 {
     /**
      * @ORM\Id()

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Liste des tâches {% endblock %}
+{% block title %} Liste des rendez-vous {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -46,14 +46,14 @@
             </tr>
             </thead>
             <tbody>
-            {% if tachesRdv is not empty %}
-                {% for tacheRdv in tachesRdv %}
+            {% if rdvs is not empty %}
+                {% for rdv in rdvs %}
                     <tr>
-                        <td>{{ tacheRdv.type }}</td>
-                        <td>{{ tacheRdv.date | date('d/m/Y') }} à {{ tacheRdv.heure | date('H:i')}}</td>
-                        <td>{{ tacheRdv.lieu }}</td>
-                        <td style="width: 250px;"><a href="{{ path('tacheRdv_edit', {'id': tacheRdv.id}) }}" class="btn btn-primary">Modifier</a>
-                            <a href="{{ path('tacheRdv_delete', {'id': tacheRdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                        <td>{{ rdv.type }}</td>
+                        <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.heure | date('H:i')}}</td>
+                        <td>{{ rdv.lieu }}</td>
+                        <td style="width: 250px;"><a href="{{ path('rdv_edit', {'id': rdv.id}) }}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ path('rdv_delete', {'id': rdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
                     </tr>
                 {% endfor %}
             {% else %}
@@ -64,7 +64,7 @@
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="5" class="text-center"><a href="{{ ('tacheRdvPasse') }}">Consultez les rendez-vous passés</a></td>
+                <td colspan="5" class="text-center"><a href="{{ ('rdvPasse') }}">Consultez les rendez-vous passés</a></td>
             </tr>
             </tfoot>
         </table>

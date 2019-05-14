@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme formTacheRdv 'bootstrap_4_layout.html.twig' %}
+{% form_theme formRdv 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
 
@@ -12,15 +12,15 @@
         {% endif %}
     </h1>
 
-    {{ form_start(formTacheRdv) }}
+    {{ form_start(formRdv) }}
 
-    {{ form_row(formTacheRdv.type, { 'attr': {'placeholder': 'Type de rendez-vous'}}) }}
+    {{ form_row(formRdv.type, { 'attr': {'placeholder': 'Type de rendez-vous'}}) }}
 
-    {{ form_row(formTacheRdv.date, { 'attr': {'placeholder': 'Date'}}) }}
+    {{ form_row(formRdv.date, { 'attr': {'placeholder': 'Date'}}) }}
 
-    {{ form_row(formTacheRdv.heure) }}
+    {{ form_row(formRdv.heure) }}
 
-    {{ form_row(formTacheRdv.lieu, { 'attr': {'placeholder': 'Lieu'}}) }}
+    {{ form_row(formRdv.lieu, { 'attr': {'placeholder': 'Lieu'}}) }}
 
     <button type="submit" class="btn btn-success">
     {% if (editMode) %}
@@ -30,6 +30,6 @@
     {% endif %}
     </button>
 
-    {{ form_end(formTacheRdv) }}
+    {{ form_end(formRdv) }}
 
 {% endblock %}
