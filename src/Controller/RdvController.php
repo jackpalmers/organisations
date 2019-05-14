@@ -52,6 +52,7 @@ class RdvController extends AbstractController
     /**
      * @Route("/rdv/new", name="rdv_create")
      * @Route("/rdv/{id<\d+>}/edit", name="rdv_edit")
+     * @throws \Exception
      */
     // "<\d+>" permet de gérer les cas de string passés dans l'url à la place de l'id
     public function form(RdvRepository $repo, Rdv $rdv = null, Request $request, ObjectManager $manager)
@@ -62,16 +63,14 @@ class RdvController extends AbstractController
         // on test si l'id du rdv passé en get existe en base
         $idRdv = $request->get('id');
         $rdvExist = $repo->isRdvExistById($idRdv);
-//
+
         // si le rdv n'existe pas et que nous ne sommes pas en création (getRequestUri renvoie l'url actuelle)
         if (empty($rdvExist) && $request->getRequestUri() != '/rdv/new')
             throw new \Exception('Page introuvable (Rendez-vous non existante en base)');
 
         // si mon rdv existe et que l'utilisateur du rdv est l'utilisateur connecté
         if ($rdvExist && $rdv->getUserId() != $this->getUser())
-        {
             throw new \Exception('Page introuvable (Rendez-vous lié à un autre utilisateur)');
-        }
 
         $form = $this->createForm(RdvType::class, $rdv); // , ['taskAlreadyCreated' => $editForm]
 
@@ -88,12 +87,8 @@ class RdvController extends AbstractController
 
             $manager->persist($rdv);
             $manager->flush();
-//            $manager->refresh();
 
             return $this->redirectToRoute('rdvAVenir');
-//            return $this->redirectToRoute('tacheRdv_show', [
-//                'id' => $rdv->getId()
-//            ]);
         }
 
         return $this->render('rdv/create.html.twig', [
@@ -101,17 +96,6 @@ class RdvController extends AbstractController
             'editMode' => $rdv->getId() !== null
         ]);
     }
-
-    // Plus utilisé (à voir à l'avenir)
-//    /**
-//     * @Route("/rdv/{id}", name="tacheRdv_show")
-//     */
-//    public function show(Rdv $rdv)
-//    {
-//        return $this->render('rdv/show.html.twig', [
-//            'rdv' => $rdv
-//        ]);
-//    }
 
     /**
      * @Route("/rdv/{id}/delete", name="rdv_delete")
