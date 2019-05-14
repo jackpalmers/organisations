@@ -90,15 +90,22 @@
                         </button>
                     </div>
                 </ul>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <a href="{{ path('user_manage') }}">Paramètres du compte</a>
+                    </button>
+                </div>
                 <form class="form-inline my-2 my-lg-0">
-                    <a class="nav-link">Bonjour {{ app.user.username }}</a>
-                    <div class="dropdown">
-                        <img src="{{ asset('images/double_engrenage.ico') }}" style="width:80px;" alt="" class="dropbtn"></img>
-                        <div class="dropdown-content listRight">
-                            <a class="nav-link" href="{{ path('user_manage') }}">Paramètres</a>
-                            <a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>
-                        </div>
-                    </div>
+                    {#<a class="nav-link">Bonjour {{ app.user.username }}</a>#}
+                    <div class="nav-link">Déconnexion</div>
+                    <a class="navbar-brand" href="{{ path('security_logout') }}"><img src="{{ asset('images/logout.ico') }}" style="width: 50px;" alt=""/></a>
+                    {#<div class="dropdown">#}
+                        {#<img src="{{ asset('images/double_engrenage.ico') }}" style="width:80px;" alt="" class="dropbtn"></img>#}
+                        {#<div class="dropdown-content listRight">#}
+                            {#<a class="nav-link" href="{{ path('user_manage') }}">Paramètres</a>#}
+                            {#<a class="nav-link" href="{{ path('security_logout') }}">Déconnexion</a>#}
+                        {#</div>#}
+                    {#</div>#}
                 </form>
             </div>
         </nav>
