@@ -70,16 +70,16 @@
         </tr>
         </thead>
         <tbody>
-        {% for tacheDev in tachesDev %}
+        {% for ficheBug in fichesBug %}
             <tr>
-                <td>{{ tacheDev.projectName }}</td>
-                <td>{{ tacheDev.description }} </td>
+                <td>{{ ficheBug.projectName }}</td>
+                <td>{{ ficheBug.description }} </td>
             </tr>
         {% endfor %}
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="5" class="text-center"><a href= "{{ path('tacheDev') }}" class="btn btn-primary">Voir la liste complète des fiches de bug</a></td>
+            <td colspan="5" class="text-center"><a href= "{{ path('ficheBug') }}" class="btn btn-primary">Voir la liste complète des fiches de bug</a></td>
         </tr>
         </tfoot>
     </table>

@@ -70,7 +70,7 @@
                         <button class="dropbtn">Ajouter une tâche</button>
                         <div class="dropdown-content">
                             <a class="nav-link" href="{{ path('tacheRdv_create') }}">Créer un rendez-vous</a>
-                            <a class="nav-link" href="{{ path('tacheDev_create') }}">Créer une fiche de développement</a>
+                            <a class="nav-link" href="{{ path('ficheBug_create') }}">Créer une fiche de développement</a>
                             <a class="nav-link" href="{{ path('tacheSport_create') }}">Créer un récapitulatif sportif</a>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="dropdown">
                         <button class="dropbtn">
-                            <a href="{{ path('tacheDev') }}">Consulter les bugs</a>
+                            <a href="{{ path('ficheBug') }}">Consulter les bugs</a>
                         </button>
                     </div>
                     <div class="dropdown">
@@ -89,21 +89,6 @@
                             <a href="{{ path('tacheSport') }}">Consulter les activités sportives</a>
                         </button>
                     </div>
-                    {#<li class="nav-item">#}
-                        {#<a class="nav-link" href="{{ path('tacheSport') }}" onmouseover="show()">Sport</a>#}
-                    {#</li>#}
-                    {#<li class="nav-item">#}
-                        {#<a class="nav-link" href="{{ path('tacheAchat') }}" onmouseover="show()">Achats à faire</a>#}
-                    {#</li>#}
-                    {#<li class="nav-item">#}
-                        {#<a class="nav-link" href="{{ path('tacheWow') }}" onmouseover="show()">Wow</a>#}
-                    {#</li>#}
-                    {#<li class="nav-item">#}
-                        {#<a class="nav-link" href="{{ path('tacheRdv_create') }}" onmouseover="show()">Créer un rendez-vous</a>#}
-                    {#</li>#}
-                    {#<li class="nav-item">#}
-                        {#<a class="nav-link" href="{{ path('tacheDev_create') }}" onmouseover="show()">Créer une fiche développement</a>#}
-                    {#</li>#}
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <a class="nav-link">Bonjour {{ app.user.username }}</a>

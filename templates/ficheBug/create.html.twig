@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formFicheBug 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>
+        {% if (editMode) %}
+            Modification d'une fiche de bug
+        {% else %}
+            Creation d'une fiche de bug
+        {% endif %}
+    </h1>
+
+    {{ form(formFicheBug) }}
+
+{% endblock %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Liste des tâches de développement {% endblock %}
+{% block title %} Liste des fiches de bug {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -47,21 +47,21 @@
         </tr>
         </thead>
         <tbody>
-        {% for tacheDev in tachesDev %}
+        {% for ficheBug in fichesBug %}
 
-            {% if tacheDev.etat == 0 %}
+            {% if ficheBug.etat == 0 %}
                 <tr style="background-color: #ffcc00">
-            {% elseif tacheDev.etat == 1 %}
+            {% elseif ficheBug.etat == 1 %}
                 <tr style="background-color: #1e7e34">
-            {% elseif tacheDev.etat == 2 %}
+            {% elseif ficheBug.etat == 2 %}
                 <tr style="background-color: #bd2130">
             {% endif %}
 
-                <td>{{ tacheDev.projectName }}</td>
-                <td>{{ tacheDev.description }}</td>
-                <td style="width: 300px;">{{ tacheDev.note }}</td>
-                <td style="width: 250px;"><a href="{{ path('tacheDev_edit', {'id': tacheDev.id}) }}" class="btn btn-primary">Modifier</a>
-                <a href="{{ path('tacheDev_delete', {'id': tacheDev.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                <td>{{ ficheBug.projectName }}</td>
+                <td>{{ ficheBug.description }}</td>
+                <td style="width: 300px;">{{ ficheBug.note }}</td>
+                <td style="width: 250px;"><a href="{{ path('ficheBug_edit', {'id': ficheBug.id}) }}" class="btn btn-primary">Modifier</a>
+                <a href="{{ path('ficheBug_delete', {'id': ficheBug.id}) }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
         {% endfor %}
         </tbody>
