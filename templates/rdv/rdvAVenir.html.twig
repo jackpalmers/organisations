@@ -32,16 +32,15 @@
     </style>
 {% endblock %}
 
-
 {% block body %}
     <br/>
         <table class="table table-bordered table-hover">
             <thead>
             <th class="th" colspan="4">Rendez-vous à venir</th>
             <tr>
-                <th>Type</th>
-                <th>Date</th>
-                <th>Lieu</th>
+                <th><img src="{{ asset('images/menu.png') }}" title="Type du rendez-vous" style="width:35px;"/></th> {#Type#}
+                <th><img src="{{ asset('images/calendar.ico') }}" title="Date du rendez-vous" style="width:35px;"/></th> {#Date#}
+                <th><img src="{{ asset('images/maplocation.ico') }}" title="Lieu du rendez-vous" style="width:35px;"/></th> {#Lieu#}
                 <th></th>
             </tr>
             </thead>
@@ -52,19 +51,23 @@
                         <td>{{ rdv.type }}</td>
                         <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.heure | date('H:i')}}</td>
                         <td>{{ rdv.lieu }}</td>
-                        <td style="width: 250px;"><a href="{{ path('rdv_edit', {'id': rdv.id}) }}" class="btn btn-primary">Modifier</a>
-                            <a href="{{ path('rdv_delete', {'id': rdv.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                        <td style="width: auto;">
+                            {#<a href="{{ path('rdv_edit', {'id': rdv.id}) }}" class="btn btn-primary">Modifier</a>#}
+                            {#<a href="{{ path('rdv_delete', {'id': rdv.id}) }}" class="btn btn-danger">Supprimer</a></td>#}
+                            <a href="{{ path('rdv_edit', {'id': rdv.id}) }}"><img src="{{ asset('images/pencil.png') }}" title="Modifier le rendez-vous" style="width:25px;" /></a>
+                            <a href="{{ path('rdv_delete', {'id': rdv.id}) }}"><img src="{{ asset('images/poubelle.png') }}" title="Supprimer le rendez-vous" style="width:25px;" /></a>
+                        </td>
                     </tr>
                 {% endfor %}
             {% else %}
                 <tr>
-                    <td colspan="5" class="text-center">Aucun rendez-vous à venir trouvé</td>
+                    <td colspan="4" class="text-center">Aucun rendez-vous à venir trouvé, souhaitez-vous en <a href="{{ path('rdv_create') }}">ajouter ?</a></td>
                 </tr>
             {% endif %}
             </tbody>
             <tfoot>
             <tr>
-                <td colspan="5" class="text-center"><a href="{{ ('rdvPasse') }}">Consultez les rendez-vous passés</a></td>
+                <td colspan="4" class="text-center"><a href="{{ ('rdvPasse') }}">Consultez les rendez-vous passés</a></td>
             </tr>
             </tfoot>
         </table>

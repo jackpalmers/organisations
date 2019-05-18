@@ -2,6 +2,13 @@
 
 {% form_theme formRdv 'bootstrap_4_layout.html.twig' %}
 
+{% block stylesheets %}
+    <style>
+        .w-auto {
+            width: auto;
+        }
+    </style>
+{% endblock %}
 {% block body %}
 
     <h1>
@@ -12,24 +19,16 @@
         {% endif %}
     </h1>
 
-    {{ form_start(formRdv) }}
+    {{ form(formRdv) }}
 
-    {{ form_row(formRdv.type, { 'attr': {'placeholder': 'Type de rendez-vous'}}) }}
+{% endblock %}
 
-    {{ form_row(formRdv.date, { 'attr': {'placeholder': 'Date'}}) }}
-
-    {{ form_row(formRdv.heure) }}
-
-    {{ form_row(formRdv.lieu, { 'attr': {'placeholder': 'Lieu'}}) }}
-
-    <button type="submit" class="btn btn-success">
-    {% if (editMode) %}
-        Enregistrer les modifications
-    {% else %}
-        Ajouter le rendez-vous
-    {% endif %}
-    </button>
-
-    {{ form_end(formRdv) }}
-
+{% block javascripts %}
+    {{ parent() }}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        jQuery(document).ready(function() {
+            $('.js-datepicker').datepicker();
+        });
+    </script>
 {% endblock %}

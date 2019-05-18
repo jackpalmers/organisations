@@ -40,53 +40,64 @@
         <thead>
         <th class="th" colspan="3">Rendez-vous récemment ajouté</th>
         <tr>
-            <th>Type</th>
-            <th>Date</th>
-            <th>Lieu</th>
+            <th><img src="{{ asset('images/menu.png') }}" title="Type du rendez-vous" style="width:35px;"/></th> {#Type#}
+            <th><img src="{{ asset('images/calendar.ico') }}" title="Date du rendez-vous" style="width:35px;"/></th> {#Date#}
+            <th><img src="{{ asset('images/maplocation.ico') }}" title="Lieu du rendez-vous" style="width:35px;"/></th> {#Lieu#}
         </tr>
         </thead>
         <tbody>
-        {% for rdv in rdvs %}
-            <tr>
-                <td>{{ rdv.type }}</td>
-                <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.heure | date('H:i')}}</td>
-                <td>{{ rdv.lieu }}</td>
-            </tr>
-        {% endfor %}
+        {% if rdvs is not empty %}
+            {% for rdv in rdvs %}
+                <tr>
+                    <td>{{ rdv.type }}</td>
+                    <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.heure | date('H:i')}}</td>
+                    <td>{{ rdv.lieu }}</td>
+                </tr>
+            {% endfor %}
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-center"><a href= "{{ path('rdvAVenir') }}" class="btn btn-primary">Voir la liste complète des rendez-vous</a></td>
+                </tr>
+            </tfoot>
+        {% else %}
+            <td colspan="3" class="text-center">Aucun rendez-vous trouvé</td>
+        {% endif %}
         </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="3" class="text-center"><a href= "{{ path('rdvAVenir') }}" class="btn btn-primary">Voir la liste complète des rendez-vous</a></td>
-        </tr>
-        </tfoot>
+
     </table>
 
     <table class="table table-bordered table-hover">
         <thead>
         <th class="th" colspan="2">Bug récemment soumis</th>
         <tr>
+            {#<th><img src="{{ asset('images/project.png') }}" title="Nom du projet" style="width:35px;"/></th> #}{#Projet#}
+            {#<th><img src="{{ asset('images/description.png') }}" title="Description" style="width:35px;"/></th> #}{#Description#}
             <th>Projet</th>
             <th>Description</th>
         </tr>
         </thead>
         <tbody>
-        {% for ficheBug in fichesBug %}
-            <tr>
-                <td>{{ ficheBug.projectName }}</td>
-                <td>{{ ficheBug.description }} </td>
-            </tr>
-        {% endfor %}
+        {% if fichesBug is not empty %}
+            {% for ficheBug in fichesBug %}
+                <tr>
+                    <td>{{ ficheBug.projectName }}</td>
+                    <td>{{ ficheBug.description }} </td>
+                </tr>
+            {% endfor %}
+            <tfoot>
+                <tr>
+                    <td colspan="2" class="text-center"><a href= "{{ path('ficheBug') }}" class="btn btn-primary">Voir la liste complète des fiches de bug</a></td>
+                </tr>
+            </tfoot>
+        {% else %}
+            <td colspan="2" class="text-center">Aucune fiche de bug trouvée</td>
+        {% endif %}
         </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="5" class="text-center"><a href= "{{ path('ficheBug') }}" class="btn btn-primary">Voir la liste complète des fiches de bug</a></td>
-        </tr>
-        </tfoot>
     </table>
 
     <table class="table table-bordered table-hover">
         <thead>
-        <th class="th" colspan="3">Récentes activitées sportives</th>
+        <th class="th" colspan="3">Récentes activités sportives</th>
         <tr>
             <th>Sport</th>
             <th>Durée / Nombre</th>
@@ -94,23 +105,28 @@
         </tr>
         </thead>
         <tbody>
-        {% for tacheSport in tachesSport %}
-            <tr>
-                {# on affiche soit le nombre soit la durée en testant si l'un des 2 champs est null #}
-                <td>{{ tacheSport.nomSport }}</td>
-                {% if tacheSport.duree is null %}
-                    <td>{{ tacheSport.nombre }} </td>
-                {% else %}
-                    <td>{{ tacheSport.duree | date('i:s') }} min</td>
-                {% endif %}
-                <td>{{ tacheSport.dateSeance | date('d/m/Y') }}</td>
-            </tr>
-        {% endfor %}
+        {% if tachesSport is not empty %}
+            {% for tacheSport in tachesSport %}
+                <tr>
+                    {# on affiche soit le nombre soit la durée en testant si l'un des 2 champs est null #}
+                    <td>{{ tacheSport.nomSport }}</td>
+                    {% if tacheSport.duree is null %}
+                        <td>{{ tacheSport.nombre }} </td>
+                    {% else %}
+                        <td>{{ tacheSport.duree | date('i:s') }} min</td>
+                    {% endif %}
+                    <td>{{ tacheSport.dateSeance | date('d/m/Y') }}</td>
+                </tr>
+
+            {% endfor %}
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="text-center"><a href= "{{ path('tacheSport') }}" class="btn btn-primary">Voir la liste complète des activités sportives</a></td>
+                </tr>
+            </tfoot>
+        {% else %}
+            <td colspan="4" class="text-center">Aucune activité sportive trouvée</td>
+        {% endif %}
         </tbody>
-        <tfoot>
-        <tr>
-            <td colspan="5" class="text-center"><a href= "{{ path('tacheSport') }}" class="btn btn-primary">Voir la liste complète des activités sportives</a></td>
-        </tr>
-        </tfoot>
     </table>
 {% endblock %}

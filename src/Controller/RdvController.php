@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Form\RdvType;
+use App\Entity\Rdv;
 use App\Repository\RdvRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Rdv;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,6 +18,8 @@ class RdvController extends AbstractController
     */
     public function showRdvAVenir(RdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
 
@@ -72,7 +74,12 @@ class RdvController extends AbstractController
         if ($rdvExist && $rdv->getUserId() != $this->getUser())
             throw new \Exception('Page introuvable (Rendez-vous lié à un autre utilisateur)');
 
-        $form = $this->createForm(RdvType::class, $rdv); // , ['taskAlreadyCreated' => $editForm]
+        if($rdv->getId() != null) // Regarder pourquoi le test de l'id à null fonctionne alors que le test (!$fichesBug) ne fonctionne pas pour afficher le select en editMode
+            $editForm = true;
+        else
+            $editForm = false;
+
+        $form = $this->createForm(RdvType::class, $rdv, ['edit' => $editForm]); // , ['taskAlreadyCreated' => $editForm]
 
         $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
 
