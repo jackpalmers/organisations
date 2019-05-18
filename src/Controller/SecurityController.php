@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\RegistrationType;
 use App\Form\UserManageType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\User;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -21,26 +21,33 @@ class SecurityController extends AbstractController
      */
     public function registration(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
-        $user = new User();
-        $form = $this->createForm(RegistrationType::class, $user);
-
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
+        if($this->getUser() == null)
         {
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
-            $user->setIsActive(1);
+            $user = new User();
+            $form = $this->createForm(RegistrationType::class, $user);
 
-            $manager->persist($user);
-            $manager->flush();
+            $form->handleRequest($request);
 
-            return $this->redirectToRoute('security_login');
+            if($form->isSubmitted() && $form->isValid())
+            {
+                $hash = $encoder->encodePassword($user, $user->getPassword());
+                $user->setPassword($hash);
+                $user->setIsActive(1);
+
+                $manager->persist($user);
+                $manager->flush();
+
+                return $this->redirectToRoute('security_login');
+            }
+
+            return $this->render('security/registration.html.twig', [
+                'form' => $form->createView()
+            ]);
         }
+        // Si l'utilisateur est authentifié, on l'empêche d'accéder à la page d'inscription
+        else
+            return $this->redirectToRoute('accueil');
 
-        return $this->render('security/registration.html.twig', [
-            'form' => $form->createView()
-        ]);
     }
 
     /**
@@ -50,9 +57,15 @@ class SecurityController extends AbstractController
     {
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        return $this->render('security/login.html.twig', [
-            'error' => $error
-        ]);
+        if($this->getUser() == null)
+        {
+            return $this->render('security/login.html.twig', [
+                'error' => $error
+            ]);
+        }
+        // Si l'utilisateurt est authentifié, on l'empêche de retourner au formulaire de connexion
+        else
+            return $this->redirectToRoute('accueil');
     }
 
     /**
