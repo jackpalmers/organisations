@@ -34,6 +34,7 @@
 
 
 {% block body %}
+
     <br/>
     <th>0 (Jaune) = En cours, 1 (Vert) = Fait, 2 (Rouge) = Fermé</th>
     <table class="table table-bordered table-hover">
@@ -47,9 +48,10 @@
         </tr>
         </thead>
         <tbody>
-        {% for ficheBug in fichesBug %}
+        {% for ficheBug in pagination %}
 
             {% if ficheBug.etat == 0 %}
+
                 <tr style="background-color: #ffcc00">
             {% elseif ficheBug.etat == 1 %}
                 <tr style="background-color: #1e7e34">
@@ -60,8 +62,10 @@
                 <td>{{ ficheBug.projectName }}</td>
                 <td>{{ ficheBug.description }}</td>
                 <td style="width: 300px;">{{ ficheBug.note }}</td>
-                <td style="width: 250px;"><a href="{{ path('ficheBug_edit', {'id': ficheBug.id}) }}" class="btn btn-primary">Modifier</a>
-                <a href="{{ path('ficheBug_delete', {'id': ficheBug.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                <td style="width: 150px;">
+                    <a href="{{ path('ficheBug_edit', {'id': ficheBug.id}) }}"><img src="{{ asset('images/pencil.png') }}" title="Modifier la fiche de bug" style="width:25px;" /></a>
+                    <a href="{{ path('ficheBug_delete', {'id': ficheBug.id}) }}"><img src="{{ asset('images/poubelle.png') }}" title="Supprimer la fiche de bug" style="width:25px;" /></a>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
@@ -71,4 +75,7 @@
         </tr>
         </tfoot>
     </table>
+    <div class="navigation" style="padding-left: 400px;"> {# padding-left pour centrer la pagination #}
+        {{ knp_pagination_render(pagination) }}
+    </div>
 {% endblock %}

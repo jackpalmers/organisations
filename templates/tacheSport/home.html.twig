@@ -46,23 +46,31 @@
         </tr>
         </thead>
         <tbody>
-        {% for tacheSport in tachesSport %}
+        {% if tachesSport is not empty %}
+            {% for tacheSport in tachesSport %}
+                <tr>
+                    <td>{{ tacheSport.nomSport }}</td>
+                    {% if tacheSport.duree is null %}
+                        <td>{{ tacheSport.nombre }} </td>
+                    {% else %}
+                        <td>{{ tacheSport.duree | date('i:s') }} min</td>
+                    {% endif %}
+                    <td>{{ tacheSport.dateSeance | date('d/m/Y') }}</td>
+                    <td style="width: auto;">
+                        <a href="{{ path('tacheSport_edit', {'id': tacheSport.id}) }}"><img src="{{ asset('images/pencil.png') }}" title="Modifier l'activité sportive" style="width:25px;" /></a>
+                        <a href="{{ path('tacheSport_delete', {'id': tacheSport.id}) }}"><img src="{{ asset('images/poubelle.png') }}" title="Supprimer l'activité sportive" style="width:25px;" /></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
             <tr>
-                <td>{{ tacheSport.nomSport }}</td>
-                {% if tacheSport.duree is null %}
-                    <td>{{ tacheSport.nombre }} </td>
-                {% else %}
-                    <td>{{ tacheSport.duree | date('i:s') }} min</td>
-                {% endif %}
-                <td>{{ tacheSport.dateSeance | date('d/m/Y') }}</td>
-                <td style="width: 250px;"><a href="{{ path('tacheSport_edit', {'id': tacheSport.id}) }}" class="btn btn-primary">Modifier</a>
-                    <a href="{{ path('tacheSport_delete', {'id': tacheSport.id}) }}" class="btn btn-danger">Supprimer</a></td>
+                <td colspan="4" class="text-center">Aucune activité sportive trouvée, souhaitez-vous en <a href="{{ path('tacheSport_create') }}">ajouter ?</a></td>
             </tr>
-        {% endfor %}
+        {% endif %}
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="5" class="text-center">Ce récapitulatif vous est proposé par la CucusIncorporation</td>
+            <td colspan="4" class="text-center">Ce récapitulatif vous est proposé par la CucusIncorporation</td>
         </tr>
         </tfoot>
     </table>

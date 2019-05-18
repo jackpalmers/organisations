@@ -24,11 +24,11 @@ class FicheBugRepository extends ServiceEntityRepository
     //  */
     public function findFicheBugByUser($userId)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.userId = :userId')
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.userId = :userId')
             ->setParameter('userId', $userId)
+            ->orderBy('f.id', 'DESC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 }
