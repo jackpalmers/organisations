@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RdvRepository;
 use App\Repository\FicheBugRepository;
-use App\Repository\TacheSportRepository;
+use App\Repository\ActiviteSportiveRepository;
 
 class MainController extends AbstractController
 {
@@ -14,7 +14,7 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="accueil")
      */
-    public function index(RdvRepository $repoRdv, FicheBugRepository $repoFicheBug, TacheSportRepository $repoTacheSport)
+    public function index(RdvRepository $repoRdv, FicheBugRepository $repoFicheBug, ActiviteSportiveRepository $repoActiviteSportive)
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         // on récupère l'utilisateur connecté
@@ -26,7 +26,7 @@ class MainController extends AbstractController
 
         $fichesBug = $repoFicheBug->findBy(array('userId' => $user->getId()), array('id' => 'asc'), 3);
 
-        $tachesSport = $repoTacheSport->findBy(array('userId' => $user->getId()), array('id' => 'asc'), 3);
+        $activitesSportive = $repoActiviteSportive->findBy(array('userId' => $user->getId()), array('id' => 'asc'), 3);
 
         if ($user->getId())
         {
@@ -34,7 +34,7 @@ class MainController extends AbstractController
                 'controller_name' => 'MainController',
                 'rdvs' => $rdvs,
                 'fichesBug' => $fichesBug,
-                'tachesSport' => $tachesSport
+                'activitesSportive' => $activitesSportive
             ]);
         }
     }
