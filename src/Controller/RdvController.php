@@ -7,16 +7,18 @@ use App\Entity\Rdv;
 use App\Repository\RdvRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RdvController extends AbstractController
+// AbstractController => Controller
+class RdvController extends Controller
 {
     /**
-    * @Route("/rdvAVenir", name="rdvAVenir", requirements={"page"="\d+"})
+    * @Route("/rdvAVenir", name="rdvAVenir")
     */
-    public function showRdvAVenir(RdvRepository $repo) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
+    public function showRdvAVenir(RdvRepository $repo, Request $request) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -25,18 +27,25 @@ class RdvController extends AbstractController
 
         $dateNow = new \DateTime('@'.strtotime('now'));
 
-        $rdvs = $repo->findRdvAVenirOrderByDateDesc($dateNow, $idUserLog);
+        $rdvsAVenir = $repo->findRdvAVenirOrderByDateDesc($dateNow, $idUserLog);
+
+        $paginator = $this->get('knp_paginator');
+        // la variable $pagination contient les rendez-vous à venir
+        $pagination = $paginator->paginate(
+            $rdvsAVenir,
+            $request->query->getInt('page', '1'), 10
+        );
 
         return $this->render('rdv/rdvAVenir.html.twig', [
             'controller_name' => 'RdvController',
-            'rdvs' => $rdvs
+            'rdvsAVenir' => $pagination
         ]);
     }
 
     /**
-     * @Route("/rdvPasse", name="trdvPasse")
+     * @Route("/rdvPasse", name="rdvPasse")
      */
-    public function showRdvDejaPasse(RdvRepository $repo)
+    public function showRdvDejaPasse(RdvRepository $repo, Request $request)
     {
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
@@ -44,10 +53,17 @@ class RdvController extends AbstractController
         $dateNow = new \DateTime('@'.strtotime('now'));
 
         // on récupère les rdv ayant pour idUser celui de l'utilisateur connecté
-        $rdvs = $repo->findRdvPasseOrderByDateDesc($dateNow, $idUserLog);
+        $rdvsPasse = $repo->findRdvPasseOrderByDateDesc($dateNow, $idUserLog);
+
+        $paginator = $this->get('knp_paginator');
+        // la variable $pagination contient les rendez-vous
+        $pagination = $paginator->paginate(
+            $rdvsPasse,
+            $request->query->getInt('page', '1'), 10
+        );
 
         return $this->render('rdv/rdvPasse.html.twig', [
-            'rdvs' => $rdvs,
+            'rdvsPasse' => $pagination
         ]);
     }
 

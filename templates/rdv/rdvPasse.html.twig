@@ -46,8 +46,8 @@
         </tr>
         </thead>
         <tbody>
-        {% if rdvs is not empty %}
-            {% for rdv in rdvs %}
+        {% if rdvsPasse is not empty %}
+            {% for rdv in rdvsPasse %}
                  <tr>
                     <td>{{ rdv.type }}</td>
                     <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.heure | date('H:i')}}</td>
@@ -71,4 +71,7 @@
         </tr>
         </tfoot>
     </table>
+    <div class="navigation" style="padding-left: 400px;"> {# padding-left pour centrer la pagination #}
+        {{ knp_pagination_render(rdvsPasse) }}
+    </div>
 {% endblock %}
