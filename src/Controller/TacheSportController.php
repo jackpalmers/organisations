@@ -5,25 +5,34 @@ namespace App\Controller;
 use App\Repository\TacheSportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\TacheSport;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 
-class TacheSportController extends AbstractController
+// AbstractController => Controller
+class TacheSportController extends Controller
 {
     /**
      * @Route("/tacheSport", name="tacheSport")
      */
-    public function index(TacheSportRepository $repo)
+    public function showTacheSport(TacheSportRepository $repo, Request $request)
     {
         $idUserLog = $this->getUser()->getId();
 
         $tachesSport = $repo->findActiviteSportiveByUser($idUserLog);
 
+        $paginator = $this->get('knp_paginator');
+        // la variable $pagination contient les rendez-vous à venir
+        $pagination = $paginator->paginate(
+            $tachesSport,
+            $request->query->getInt('page', '1'), 10
+        );
+
         return $this->render('tacheSport/home.html.twig', [
-            'controller_name' => 'UserManageType',
-            'tachesSport' => $tachesSport
+            'controller_name' => 'TacheSportController',
+            'tachesSport' => $pagination
         ]);
     }
 
