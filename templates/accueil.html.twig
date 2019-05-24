@@ -105,23 +105,23 @@
         </tr>
         </thead>
         <tbody>
-        {% if tachesSport is not empty %}
-            {% for tacheSport in tachesSport %}
+        {% if activitesSportive is not empty %}
+            {% for activiteSportive in activitesSportive %}
                 <tr>
                     {# on affiche soit le nombre soit la durée en testant si l'un des 2 champs est null #}
-                    <td>{{ tacheSport.nomSport }}</td>
-                    {% if tacheSport.duree is null %}
-                        <td>{{ tacheSport.nombre }} </td>
+                    <td>{{ activiteSportive.nomSport }}</td>
+                    {% if activiteSportive.duree is null %}
+                        <td>{{ activiteSportive.nombre }} </td>
                     {% else %}
-                        <td>{{ tacheSport.duree | date('i:s') }} min</td>
+                        <td>{{ activiteSportive.duree | date('i:s') }} min</td>
                     {% endif %}
-                    <td>{{ tacheSport.dateSeance | date('d/m/Y') }}</td>
+                    <td>{{ activiteSportive.dateSeance | date('d/m/Y') }}</td>
                 </tr>
 
             {% endfor %}
             <tfoot>
                 <tr>
-                    <td colspan="5" class="text-center"><a href= "{{ path('tacheSport') }}" class="btn btn-primary">Voir la liste complète des activités sportives</a></td>
+                    <td colspan="5" class="text-center"><a href= "{{ path('activiteSportive') }}" class="btn btn-primary">Voir la liste complète des activités sportives</a></td>
                 </tr>
             </tfoot>
         {% else %}

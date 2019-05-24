@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formActiviteSportive 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <h1>
+        {% if (editMode) %}
+            Modification de l'activité sportive
+        {% else %}
+            Creation d'une activité sportive
+        {% endif %}
+    </h1>
+
+    {{ form_start(formActiviteSportive) }}
+
+    {{ form_row(formActiviteSportive.NomSport, { 'attr': {'placeholder': 'Nom du sport'}}) }}
+
+    {{ form_row(formActiviteSportive.Duree) }}
+
+    {{ form_row(formActiviteSportive.Nombre, { 'attr': {'placeholder': 'Nombre'}}) }}
+
+    {{ form_row(formActiviteSportive.DateSeance, { 'attr': {'placeholder': 'Date'}}) }}
+
+    <button type="submit" class="btn btn-success">
+        {% if (editMode) %}
+            Enregistrer les modifications
+        {% else %}
+            Ajouter le compte rendu
+        {% endif %}
+    </button>
+
+    {{ form_end(formActiviteSportive) }}
+
+{% endblock %}

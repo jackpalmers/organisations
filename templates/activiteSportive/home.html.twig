@@ -46,25 +46,25 @@
         </tr>
         </thead>
         <tbody>
-        {% if tachesSport is not empty %}
-            {% for tacheSport in tachesSport %}
+        {% if activitesSportive is not empty %}
+            {% for activiteSportive in activitesSportive %}
                 <tr>
-                    <td>{{ tacheSport.nomSport }}</td>
-                    {% if tacheSport.duree is null %}
-                        <td>{{ tacheSport.nombre }} </td>
+                    <td>{{ activiteSportive.nomSport }}</td>
+                    {% if activiteSportive.duree is null %}
+                        <td>{{ activiteSportive.nombre }} </td>
                     {% else %}
-                        <td>{{ tacheSport.duree | date('i:s') }} min</td>
+                        <td>{{ activiteSportive.duree | date('i:s') }} min</td>
                     {% endif %}
-                    <td>{{ tacheSport.dateSeance | date('d/m/Y') }}</td>
+                    <td>{{ activiteSportive.dateSeance | date('d/m/Y') }}</td>
                     <td style="width: auto;">
-                        <a href="{{ path('tacheSport_edit', {'id': tacheSport.id}) }}"><img src="{{ asset('images/pencil.png') }}" title="Modifier l'activité sportive" style="width:25px;" /></a>
-                        <a href="{{ path('tacheSport_delete', {'id': tacheSport.id}) }}"><img src="{{ asset('images/poubelle.png') }}" title="Supprimer l'activité sportive" style="width:25px;" /></a>
+                        <a href="{{ path('activiteSportive_edit', {'id': activiteSportive.id}) }}"><img src="{{ asset('images/pencil.png') }}" title="Modifier l'activité sportive" style="width:25px;" /></a>
+                        <a href="{{ path('activiteSportive_delete', {'id': activiteSportive.id}) }}"><img src="{{ asset('images/poubelle.png') }}" title="Supprimer l'activité sportive" style="width:25px;" /></a>
                     </td>
                 </tr>
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="4" class="text-center">Aucune activité sportive trouvée, souhaitez-vous en <a href="{{ path('tacheSport_create') }}">ajouter ?</a></td>
+                <td colspan="4" class="text-center">Aucune activité sportive trouvée, souhaitez-vous en <a href="{{ path('activiteSportive_create') }}">ajouter ?</a></td>
             </tr>
         {% endif %}
         </tbody>
@@ -75,6 +75,6 @@
         </tfoot>
     </table>
     <div class="navigation" style="padding-left: 400px;"> {# padding-left pour centrer la pagination #}
-        {{ knp_pagination_render(tachesSport) }}
+        {{ knp_pagination_render(activitesSportive) }}
     </div>
 {% endblock %}
