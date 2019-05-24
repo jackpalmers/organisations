@@ -97,8 +97,6 @@ class RdvController extends Controller
 
         $form = $this->createForm(RdvType::class, $rdv, ['edit' => $editForm]); // , ['taskAlreadyCreated' => $editForm]
 
-        $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
@@ -106,12 +104,20 @@ class RdvController extends Controller
             if (!$rdv->getId())
                 $rdv->setCreatedAt(new \DateTime());
 
+            $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
             $rdv->setUserId($idUserLog); // On passe l'object user pour pouvoir créer une tâche avec l'id du user connecté
 
             $manager->persist($rdv);
             $manager->flush();
 
-            return $this->redirectToRoute('rdvAVenir');
+            $dateNow = new \DateTime('@'.strtotime('now'));
+
+            if ($rdv->getDate() >= $dateNow)
+                    return $this->redirectToRoute('rdvAVenir');
+            else if ($rdv->getDate() < $dateNow)
+                return $this->redirectToRoute('rdvPasse');
+            else
+                throw new \Exception('Date du rendez-vous invalide');
         }
 
         return $this->render('rdv/create.html.twig', [
