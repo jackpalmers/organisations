@@ -37,11 +37,15 @@ class FicheBug
     private $Etat;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $numFiche;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
     private $userId;
-
 
 
     public function getId(): ?int
@@ -93,6 +97,18 @@ class FicheBug
     public function setEtat(int $Etat): self
     {
         $this->Etat = $Etat;
+
+        return $this;
+    }
+
+    public function getNumFiche(): ?int
+    {
+        return $this->numFiche;
+    }
+
+    public function setNumFiche(int $numFiche): self
+    {
+        $this->numFiche = $numFiche;
 
         return $this;
     }

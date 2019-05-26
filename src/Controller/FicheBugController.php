@@ -46,17 +46,20 @@ class FicheBugController extends Controller
      * @param ObjectManager $manager
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function form(FicheBug $ficheBug = null, Request $request, ObjectManager $manager)
-    {
+     public function form(FicheBug $ficheBug = null, Request $request, ObjectManager $manager, FicheBugRepository $repo)
+     {
         if (!$ficheBug)
             $ficheBug = new FicheBug();
 
-        if($ficheBug->getId() != null) // Regarder pourquoi le test de l'id à null fonctionne alors que le test (!$fichesBug) ne fonctionne pas pour afficher le select en editMode
+        if($ficheBug->getId() != null) // Regarder pourquoi le test de l'id à null fonctionne alors que le test (!$fichesBug) ne fonctionne pas pour afficher le select en editMode => on test l'objet qui est créer juste avant donc celui-ci existe (vérifier si c'est ça)
             $editForm = true;
         else
             $editForm = false;
 
         $form = $this->createForm(FicheBugType::class, $ficheBug, ['taskAlreadyCreated' => $editForm]);
+
+        $lastBug = $repo->findLastFicheBugByUser($this->getUser()->getId());
+        $numNouveauBug = $lastBug->getNumFiche() + 1;
 
         $form->handleRequest($request);
 
@@ -68,6 +71,9 @@ class FicheBugController extends Controller
             $idUserLog = $this->getUser(); // On ne récupère pas l'id, on veut récupérer l'object user
             $ficheBug->setUserId($idUserLog); // On passe l'object user pour pouvoir créer une tâche avec l'id du user connecté
 
+            if($ficheBug->getId() == null)
+                $ficheBug->setNumFiche($numNouveauBug);
+
             $manager->persist($ficheBug);
             $manager->flush();
 
@@ -77,8 +83,9 @@ class FicheBugController extends Controller
         return $this->render('ficheBug/create.html.twig', [
             'formFicheBug' => $form->createView(),
             'editMode' => $ficheBug->getId() !== null,
+            'numNouveauBug' => $numNouveauBug
         ]);
-    }
+     }
 
     /**
      * @Route("/ficheBug/{id}/delete", name="ficheBug_delete")

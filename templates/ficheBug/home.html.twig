@@ -34,13 +34,13 @@
 
 
 {% block body %}
-
     <br/>
     <th>0 (Jaune) = En cours, 1 (Vert) = Fait, 2 (Rouge) = Fermé</th>
     <table class="table table-bordered table-hover">
         <thead>
-        <th class="th" colspan="4">Fiches de bug</th>
+        <th class="th" colspan="5">Fiches de bug</th>
         <tr>
+            <th style="width:100px;">N° bug</th>
             <th>Projet</th>
             <th>Description</th>
             <th>Notes supplémentaires</th>
@@ -59,6 +59,7 @@
                 <tr style="background-color: #bd2130">
             {% endif %}
 
+                <td>{{ ficheBug.numFiche }}</td>
                 <td>{{ ficheBug.projectName }}</td>
                 <td>{{ ficheBug.description }}</td>
                 <td style="width: 300px;">{{ ficheBug.note }}</td>

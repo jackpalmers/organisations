@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\FicheBug;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -27,8 +29,31 @@ class FicheBugRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('f')
             ->andWhere('f.userId = :userId')
             ->setParameter('userId', $userId)
-            ->orderBy('f.id', 'DESC')
+            ->orderBy('f.numFiche', 'DESC')
             ->getQuery()
             ->getResult();
+    }
+
+    // /**
+    //  * @return FicheBugController[] On récupère la dernière fiche de bug créée par l'utilisateur
+    //  */
+    public function findLastFicheBugByUser($userId)
+    {
+        try
+        {
+            return $this->createQueryBuilder('f')
+                ->andWhere('f.userId = :userId')
+                ->setParameter('userId', $userId)
+                ->setMaxResults('1')
+                ->orderBy('f.numFiche', 'DESC')
+                ->getQuery()
+                ->getSingleResult();
+        }
+        catch (NoResultException $e)
+        {
+        }
+        catch (NonUniqueResultException $e)
+        {
+        }
     }
 }

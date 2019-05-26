@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2bf6a3b-5b7e-4f22-932b-6791eae85bb0" name="Default" comment="Ajout main controller pour changer la page d'accueil">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/FicheBugController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FicheBugController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RdvController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RdvController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/FicheBug.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/FicheBug.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/FicheBugRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FicheBugRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/accueil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accueil.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ficheBug/create.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ficheBug/create.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ficheBug/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ficheBug/home.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,52 +62,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RdvController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controller/RdvController.php">
+      <file leaf-file-name="FicheBugController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/FicheBugController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="120" selection-start-line="120" selection-end-line="120" />
+            <state relative-caret-position="15">
+              <caret line="48" column="61" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
               <folding>
-                <element signature="e#34#55#0#PHP" expanded="true" />
-                <element signature="e#4360#4371#1#PHP" expanded="true" />
-                <element signature="e#4352#4362#1#PHP" expanded="true" />
+                <element signature="e#34#58#0#PHP" expanded="true" />
+                <element signature="e#3076#3103#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rdvAVenir.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/rdv/rdvAVenir.html.twig">
+      <file leaf-file-name="SecurityController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/SecurityController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/activiteSportive/home.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="59" column="63" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="63" />
-              <folding>
-                <element signature="e#12#26#0#Twig" expanded="true" />
-                <element signature="e#1648#1669#0#Twig" expanded="true" />
-                <element signature="e#1849#1872#0#Twig" expanded="true" />
-                <element signature="e#2256#2279#0#Twig" expanded="true" />
-              </folding>
+            <state relative-caret-position="585">
+              <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="create.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/activiteSportive/create.html.twig">
+        <entry file="file://$PROJECT_DIR$/templates/ficheBug/create.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <element signature="e#12#26#0#Twig" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="34" column="78" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/ficheBug/home.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="42" column="48" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="accueil.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1110">
+              <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FicheBugRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Repository/FicheBugRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="645">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FicheBug.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Entity/FicheBug.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1890">
+              <caret line="126" selection-start-line="126" selection-end-line="126" />
             </state>
           </provider>
         </entry>
@@ -110,8 +141,8 @@
       <file leaf-file-name="MainController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/MainController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="330">
+              <caret line="26" column="103" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
             </state>
           </provider>
         </entry>
@@ -119,7 +150,7 @@
       <file leaf-file-name="Rdv.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Rdv.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="105">
               <caret line="8" selection-start-line="8" selection-end-line="9" />
               <folding>
                 <element signature="e#30#62#0#PHP" expanded="true" />
@@ -179,13 +210,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.txt" root0="SKIP_INSPECTION" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/tacheRdv/rdvPasse.html.twig" />
         <option value="$PROJECT_DIR$/templates/security/login.html.twig" />
         <option value="$PROJECT_DIR$/src/Repository/TacheRdvRepository.php" />
         <option value="$PROJECT_DIR$/templates/tacheRdv/create.html.twig" />
@@ -202,11 +229,9 @@
         <option value="$PROJECT_DIR$/src/Form/TacheDevType.php" />
         <option value="$PROJECT_DIR$/src/Controller/FicheBug.php" />
         <option value="$PROJECT_DIR$/src/Form/FicheBugType.php" />
-        <option value="$PROJECT_DIR$/src/Entity/FicheBug.php" />
         <option value="$PROJECT_DIR$/var/cache/dev/Container8m1FK0v/getTacheRdvControllerService.php" />
         <option value="$PROJECT_DIR$/src/Entity/Rdv.php" />
         <option value="$PROJECT_DIR$/src/Repository/RdvRepository.php" />
-        <option value="$PROJECT_DIR$/templates/ficheBug/create.html.twig" />
         <option value="$PROJECT_DIR$/templates/rdv/date.html.twig" />
         <option value="$PROJECT_DIR$/templates/rdv/create.html.twig" />
         <option value="$PROJECT_DIR$/src/Form/RdvType.php" />
@@ -215,27 +240,30 @@
         <option value="$PROJECT_DIR$/config/packages/security.yaml" />
         <option value="$PROJECT_DIR$/vendor/symfony/framework-bundle/Controller/AbstractController.php" />
         <option value="$PROJECT_DIR$/config/packages/framework.yaml" />
-        <option value="$PROJECT_DIR$/src/Repository/FicheBugRepository.php" />
-        <option value="$PROJECT_DIR$/templates/ficheBug/home.html.twig" />
         <option value="$PROJECT_DIR$/src/Kernel.php" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/SecurityController.php" />
         <option value="$PROJECT_DIR$/public/css/navbar.css" />
         <option value="$PROJECT_DIR$/config/packages/knp_paginator.yaml" />
-        <option value="$PROJECT_DIR$/src/Controller/FicheBugController.php" />
         <option value="$PROJECT_DIR$/templates/rdv/rdvPasse.html.twig" />
         <option value="$PROJECT_DIR$/templates/rdv/rdvAVenir.html.twig" />
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/TacheSportController.php" />
         <option value="$PROJECT_DIR$/src/Controller/AcitviteSportiveController.php" />
-        <option value="$PROJECT_DIR$/src/Controller/MainController.php" />
-        <option value="$PROJECT_DIR$/templates/accueil.html.twig" />
         <option value="$PROJECT_DIR$/templates/tacheSport/home.html.twig" />
         <option value="$PROJECT_DIR$/templates/activiteSportive/create.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/ActiviteSportiveController.php" />
         <option value="$PROJECT_DIR$/src/Repository/ActiviteSportiveRepository.php" />
         <option value="$PROJECT_DIR$/src/Entity/ActiviteSportive.php" />
         <option value="$PROJECT_DIR$/src/Controller/RdvController.php" />
+        <option value="$PROJECT_DIR$/src/Migrations/Version20190524212415.php" />
+        <option value="$PROJECT_DIR$/src/Entity/FicheBug.php" />
+        <option value="$PROJECT_DIR$/src/Controller/MainController.php" />
+        <option value="$PROJECT_DIR$/templates/ficheBug/home.html.twig" />
+        <option value="$PROJECT_DIR$/templates/accueil.html.twig" />
+        <option value="$PROJECT_DIR$/src/Repository/FicheBugRepository.php" />
+        <option value="$PROJECT_DIR$/templates/ficheBug/create.html.twig" />
+        <option value="$PROJECT_DIR$/src/Controller/FicheBugController.php" />
       </list>
     </option>
   </component>
@@ -361,10 +389,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="576" />
-    <option name="y" value="-5" />
-    <option name="width" value="817" />
-    <option name="height" value="589" />
+    <option name="x" value="460" />
+    <option name="y" value="-4" />
+    <option name="width" value="655" />
+    <option name="height" value="472" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -540,7 +568,10 @@
       <workItem from="1558298692625" duration="420000" />
       <workItem from="1558447027837" duration="7861000" />
       <workItem from="1558633166405" duration="1194000" />
-      <workItem from="1558727285083" duration="5319000" />
+      <workItem from="1558727285083" duration="7528000" />
+      <workItem from="1558777632589" duration="1907000" />
+      <workItem from="1558810779961" duration="1195000" />
+      <workItem from="1558901806972" duration="401000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout main controller pour changer la page d'accueil">
       <created>1555895639126</created>
@@ -567,7 +598,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289887000" />
+    <option name="totallyTimeSpent" value="295599000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -579,31 +610,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4985755" visible="true" weight="0.13859275" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32905984" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
-      <window_info anchor="bottom" id="Command Line Tools Console" order="12" weight="0.32905984" />
+      <window_info anchor="right" id="Database" order="3" weight="0.24496645" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32905984" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.67948717" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4985755" visible="true" weight="0.16845638" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" weight="0.24496645" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info id="Structure" order="1" sideWeight="0.5014245" side_tool="true" weight="0.20604026" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.2863248" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Command Line Tools Console" order="12" weight="0.32905984" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32905984" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32905984" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -649,16 +679,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/http/http.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="3166" column="31" selection-start-line="3166" selection-start-column="31" selection-end-line="3166" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/symfony/http-foundation/Response.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -701,13 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ficheBug/create.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -776,13 +789,6 @@
     <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/KnpPaginatorBundle.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Repository/FicheBugRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle/Pagination/SlidingPagination.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2615">
@@ -840,13 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/SecurityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/validator.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -871,16 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/FicheBugController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-          <folding>
-            <element signature="e#34#58#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/services.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -895,33 +884,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ficheBug/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="66" column="53" selection-start-line="66" selection-start-column="38" selection-end-line="66" selection-end-column="53" />
-          <folding>
-            <element signature="e#1705#1718#0#Twig" expanded="true" />
-            <element signature="e#1888#1903#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/tacheSport/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/tacheSport/show.html.twig" />
     <entry file="file://$PROJECT_DIR$/templates/activiteSportive/create.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -929,12 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="59" column="63" selection-start-line="59" selection-start-column="42" selection-end-line="59" selection-end-column="63" />
-          <folding>
-            <element signature="e#12#26#0#Twig" expanded="true" />
-            <element signature="e#1648#1669#0#Twig" expanded="true" />
-            <element signature="e#1849#1872#0#Twig" expanded="true" />
-            <element signature="e#2256#2279#0#Twig" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -942,19 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-          <folding>
-            <element signature="e#34#66#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Rdv.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="9" />
-          <folding>
-            <element signature="e#30#62#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -969,52 +917,96 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-          <folding>
-            <element signature="e#1106#1139#0#PHP" expanded="true" />
-            <element signature="e#2309#2327#1#PHP" expanded="true" />
-            <element signature="e#2370#2405#0#PHP" expanded="true" />
-            <element signature="e#3046#3064#1#PHP" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/RdvController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="125" column="11" selection-start-line="125" selection-start-column="11" selection-end-line="125" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Migrations/Version20190524212415.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="29" column="63" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/FicheBug.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="510">
           <caret line="34" column="78" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="78" />
-          <folding>
-            <element signature="e#1839#1854#0#Twig" expanded="true" />
-            <element signature="e#1961#1984#0#Twig" expanded="true" />
-            <element signature="e#2560#2576#0#Twig" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ficheBug/home.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="48" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/accueil.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="113" column="63" selection-start-line="113" selection-start-column="63" selection-end-line="113" selection-end-column="63" />
+        <state relative-caret-position="1110">
+          <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Rdv.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" selection-start-line="8" selection-end-line="9" />
           <folding>
-            <element signature="e#4266#4282#0#Twig" expanded="true" />
+            <element signature="e#30#62#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="330">
+          <caret line="26" column="103" selection-start-line="26" selection-start-column="103" selection-end-line="26" selection-end-column="103" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/RdvController.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/SecurityController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
+        <state relative-caret-position="585">
+          <caret line="48" column="53" selection-start-line="48" selection-start-column="53" selection-end-line="48" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Repository/FicheBugRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="645">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ficheBug/create.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/FicheBugController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="48" column="61" selection-start-line="48" selection-start-column="61" selection-end-line="48" selection-end-column="61" />
           <folding>
-            <element signature="e#34#55#0#PHP" expanded="true" />
-            <element signature="e#4360#4371#1#PHP" expanded="true" />
-            <element signature="e#4352#4362#1#PHP" expanded="true" />
+            <element signature="e#34#58#0#PHP" expanded="true" />
+            <element signature="e#3076#3103#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
