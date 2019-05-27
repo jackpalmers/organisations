@@ -68,10 +68,11 @@
 
     <table class="table table-bordered table-hover">
         <thead>
-        <th class="th" colspan="2">Bug récemment soumis</th>
+        <th class="th" colspan="3">Bug récemment soumis <img src="{{ asset('images/icon.png') }}" title="Bug en cours" style="width:20px;" /></th>
         <tr>
             {#<th><img src="{{ asset('images/project.png') }}" title="Nom du projet" style="width:35px;"/></th> #}{#Projet#}
             {#<th><img src="{{ asset('images/description.png') }}" title="Description" style="width:35px;"/></th> #}{#Description#}
+            <th style="width:100px;">N° bug</th>
             <th>Projet</th>
             <th>Description</th>
         </tr>
@@ -80,17 +81,18 @@
         {% if fichesBug is not empty %}
             {% for ficheBug in fichesBug %}
                 <tr>
+                    <td>{{ ficheBug.numFiche }}</td>
                     <td>{{ ficheBug.projectName }}</td>
                     <td>{{ ficheBug.description }} </td>
                 </tr>
             {% endfor %}
             <tfoot>
                 <tr>
-                    <td colspan="2" class="text-center"><a href= "{{ path('ficheBug') }}" class="btn btn-primary">Voir la liste complète des fiches de bug</a></td>
+                    <td colspan="3" class="text-center"><a href= "{{ path('ficheBug') }}" class="btn btn-primary">Voir la liste complète des fiches de bug</a></td>
                 </tr>
             </tfoot>
         {% else %}
-            <td colspan="2" class="text-center">Aucune fiche de bug trouvée</td>
+            <td colspan="3" class="text-center">Aucune fiche de bug trouvée</td>
         {% endif %}
         </tbody>
     </table>
