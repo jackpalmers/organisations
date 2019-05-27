@@ -59,7 +59,10 @@ class FicheBugController extends Controller
         $form = $this->createForm(FicheBugType::class, $ficheBug, ['taskAlreadyCreated' => $editForm]);
 
         $lastBug = $repo->findLastFicheBugByUser($this->getUser()->getId());
-        $numNouveauBug = $lastBug->getNumFiche() + 1;
+        if($lastBug != null) // on gère le cas de la création de la première fiche de bug, on ne trouvera rien en base
+            $numNouveauBug = $lastBug->getNumFiche() + 1;
+        else
+            $numNouveauBug = 1;
 
         $form->handleRequest($request);
 
