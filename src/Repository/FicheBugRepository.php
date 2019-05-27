@@ -56,4 +56,19 @@ class FicheBugRepository extends ServiceEntityRepository
         {
         }
     }
+
+    // /**
+    //  * @return FicheBugController[] On récupère les 3 derniers bug en cours
+    //  */
+    public function findFicheBugEnCoursByUser($userId)
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.userId = :userId')
+            ->andWhere('f.Etat = 0')
+            ->setParameter('userId', $userId)
+            ->setMaxResults('3')
+            ->orderBy('f.numFiche', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

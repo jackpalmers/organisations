@@ -18,13 +18,11 @@ class MainController extends AbstractController
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         // on récupère l'utilisateur connecté
-//        if ($this->getUser())
-            $user = $this->getUser();
-//        else
-//            return $this->redirectToRoute('security_login');
+        $user = $this->getUser();
+
         $rdvs = $repoRdv->findBy(array('userId' => $user->getId()), array('createdAt' => 'desc'), 3);
 
-        $fichesBug = $repoFicheBug->findBy(array('userId' => $user->getId()), array('id' => 'asc'), 3);
+        $fichesBug = $repoFicheBug->findFicheBugEnCoursByUser($user->getId());
 
         $activitesSportive = $repoActiviteSportive->findBy(array('userId' => $user->getId()), array('id' => 'asc'), 3);
 
