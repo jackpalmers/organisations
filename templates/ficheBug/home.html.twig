@@ -51,12 +51,11 @@
         {% for ficheBug in pagination %}
 
             {% if ficheBug.etat == 0 %}
-
                 <tr style="background-color: #ffcc00">
             {% elseif ficheBug.etat == 1 %}
-                <tr style="background-color: #1e7e34">
+                <tr style="background-color: #00ad5f">
             {% elseif ficheBug.etat == 2 %}
-                <tr style="background-color: #bd2130">
+                <tr style="background-color: #868686">
             {% endif %}
 
                 <td>{{ ficheBug.numFiche }}</td>
