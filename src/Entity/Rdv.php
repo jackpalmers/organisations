@@ -29,11 +29,6 @@ class Rdv
     private $date;
 
     /**
-     * @ORM\Column(type="time", nullable=true)
-     */
-    private $heure;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lieu;

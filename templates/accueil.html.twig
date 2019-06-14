@@ -50,7 +50,7 @@
             {% for rdv in rdvs %}
                 <tr>
                     <td>{{ rdv.type }}</td>
-                    <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.heure | date('H:i')}}</td>
+                    <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.date | date('H:i')}}</td>
                     <td>{{ rdv.lieu }}</td>
                 </tr>
             {% endfor %}

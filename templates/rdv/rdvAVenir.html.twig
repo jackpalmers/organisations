@@ -49,7 +49,7 @@
                 {% for rdv in rdvsAVenir %}
                     <tr>
                         <td>{{ rdv.type }}</td>
-                        <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.heure | date('H:i')}}</td>
+                        <td>{{ rdv.date | date('d/m/Y') }} à {{ rdv.date | date('H:i')}}</td>
                         <td>{{ rdv.lieu }}</td>
                         <td style="width: auto;">
                             {#<a href="{{ path('rdv_edit', {'id': rdv.id}) }}" class="btn btn-primary">Modifier</a>#}

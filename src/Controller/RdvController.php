@@ -25,7 +25,7 @@ class RdvController extends Controller
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
 
-        $dateNow = new \DateTime('@'.strtotime('now'));
+        $dateNow = new \DateTime(date("Y-m-d H:i:s"));
 
         $rdvsAVenir = $repo->findRdvAVenirOrderByDateDesc($dateNow, $idUserLog);
 
@@ -50,7 +50,7 @@ class RdvController extends Controller
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
 
-        $dateNow = new \DateTime('@'.strtotime('now'));
+        $dateNow = new \DateTime(date("Y-m-d H:i:s"));
 
         // on récupère les rdv ayant pour idUser celui de l'utilisateur connecté
         $rdvsPasse = $repo->findRdvPasseOrderByDateDesc($dateNow, $idUserLog);
@@ -110,14 +110,20 @@ class RdvController extends Controller
             $manager->persist($rdv);
             $manager->flush();
 
-            $dateNow = new \DateTime('@'.strtotime('now'));
+            try
+            {
+                $dateNow = new \DateTime(date("Y-m-d H:i:s"));
+                $dateRdv = $rdv->getDate();
 
-            if ($rdv->getDate() >= $dateNow)
+                if ($dateRdv >= $dateNow)
                     return $this->redirectToRoute('rdvAVenir');
-            else if ($rdv->getDate() < $dateNow)
-                return $this->redirectToRoute('rdvPasse');
-            else
-                throw new \Exception('Date du rendez-vous invalide');
+                else if ($dateRdv < $dateNow)
+                    return $this->redirectToRoute('rdvPasse');
+            }
+            catch (\Exception $dateRdv)
+            {
+                throw new \Exception('Format de date invalide : '.$dateRdv);
+            }
         }
 
         return $this->render('rdv/create.html.twig', [
