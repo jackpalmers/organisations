@@ -3,27 +3,25 @@
 namespace App\Controller;
 
 use App\Repository\ActiviteSportiveRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\ActiviteSportive;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 
-// AbstractController => Controller
-class ActiviteSportiveController extends Controller
+class ActiviteSportiveController extends AbstractController
 {
     /**
      * @Route("/activiteSportive", name="activiteSportive")
      */
-    public function showActiviteSportive(ActiviteSportiveRepository $repo, Request $request)
+    public function showActiviteSportive(ActiviteSportiveRepository $repo, Request $request, PaginatorInterface $paginator)
     {
         $idUserLog = $this->getUser()->getId();
 
         $activitesSportive = $repo->findActiviteSportiveByUser($idUserLog);
 
-        $paginator = $this->get('knp_paginator');
         // la variable $pagination contient les rendez-vous à venir
         $pagination = $paginator->paginate(
             $activitesSportive,

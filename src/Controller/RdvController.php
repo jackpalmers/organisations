@@ -6,19 +6,18 @@ use App\Form\RdvType;
 use App\Entity\Rdv;
 use App\Repository\RdvRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-// AbstractController => Controller
-class RdvController extends Controller
+class RdvController extends AbstractController
 {
     /**
     * @Route("/rdvAVenir", name="rdvAVenir")
     */
-    public function showRdvAVenir(RdvRepository $repo, Request $request) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
+    public function showRdvAVenir(RdvRepository $repo, Request $request, PaginatorInterface $paginator) // ne contient que les rdv qui ne sont pas encore passés en terme de date pour chaque utilisateur
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
@@ -29,7 +28,6 @@ class RdvController extends Controller
 
         $rdvsAVenir = $repo->findRdvAVenirOrderByDateDesc($dateNow, $idUserLog);
 
-        $paginator = $this->get('knp_paginator');
         // la variable $pagination contient les rendez-vous à venir
         $pagination = $paginator->paginate(
             $rdvsAVenir,
@@ -45,7 +43,7 @@ class RdvController extends Controller
     /**
      * @Route("/rdvPasse", name="rdvPasse")
      */
-    public function showRdvDejaPasse(RdvRepository $repo, Request $request)
+    public function showRdvDejaPasse(RdvRepository $repo, Request $request, PaginatorInterface $paginator)
     {
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
@@ -55,8 +53,7 @@ class RdvController extends Controller
         // on récupère les rdv ayant pour idUser celui de l'utilisateur connecté
         $rdvsPasse = $repo->findRdvPasseOrderByDateDesc($dateNow, $idUserLog);
 
-        $paginator = $this->get('knp_paginator');
-        // la variable $pagination contient les rendez-vous
+        // la variable $pagination contient les rendez-vous passés
         $pagination = $paginator->paginate(
             $rdvsPasse,
             $request->query->getInt('page', '1'), 10

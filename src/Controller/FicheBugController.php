@@ -5,27 +5,25 @@ namespace App\Controller;
 use App\Entity\FicheBug;
 use App\Form\FicheBugType;
 use App\Repository\FicheBugRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 
-// AbstractController => Controller
-class FicheBugController extends Controller
+class FicheBugController extends AbstractController
 {
     /**
      * @Route("/ficheBug", name="ficheBug")
      */
-    public function showFicheBug(FicheBugRepository $repo, Request $request)
+    public function showFicheBug(FicheBugRepository $repo, Request $request, PaginatorInterface $paginator)
     {
         // on récupère l'id de l'utilisateur connecté
         $idUserLog = $this->getUser()->getId();
 
         $fichesBug = $repo->findFicheBugByUser($idUserLog);
 
-        $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $fichesBug,
             $request->query->getInt('page', '1'), 10
